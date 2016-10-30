@@ -21,23 +21,12 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "DataDirector.h"
 
-typedef void(^WebserviceSuccessBlock)(NSData * _Nonnull data);
-typedef void(^WebserviceFailBlock)(NSError * _Nonnull error);
+@class NewsApiClient;
 
-@interface Webservice : NSObject
+@interface CannedDataDirectorDataSource : NSObject <DataDirectorDataSource>
 
-@property (nonatomic, strong, readonly) NSURLSessionConfiguration * _Nonnull configuration;
-@property (nonatomic, strong, readonly) NSString * _Nonnull baseURL;
-
-- (nonnull instancetype)initWithConfiguration: (NSURLSessionConfiguration * _Nonnull)configuration
-                              baseURL: (NSString * _Nonnull)url;
-
-- (NSURLSession * _Nonnull)session;
-- (void)cancelAllTasks;
-
-- (void)fetchRawDataForRequest:(NSURLRequest * _Nonnull)request
-                       success:(WebserviceSuccessBlock _Nullable)success
-                          fail:(WebserviceFailBlock _Nullable)fail;
+- (instancetype)initWithApiClient:(NewsApiClient *)apiClient;
 
 @end

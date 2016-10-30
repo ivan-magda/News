@@ -20,24 +20,20 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import "NewsSourceLogo.h"
 
-typedef void(^WebserviceSuccessBlock)(NSData * _Nonnull data);
-typedef void(^WebserviceFailBlock)(NSError * _Nonnull error);
+@implementation NewsSourceLogo
 
-@interface Webservice : NSObject
-
-@property (nonatomic, strong, readonly) NSURLSessionConfiguration * _Nonnull configuration;
-@property (nonatomic, strong, readonly) NSString * _Nonnull baseURL;
-
-- (nonnull instancetype)initWithConfiguration: (NSURLSessionConfiguration * _Nonnull)configuration
-                              baseURL: (NSString * _Nonnull)url;
-
-- (NSURLSession * _Nonnull)session;
-- (void)cancelAllTasks;
-
-- (void)fetchRawDataForRequest:(NSURLRequest * _Nonnull)request
-                       success:(WebserviceSuccessBlock _Nullable)success
-                          fail:(WebserviceFailBlock _Nullable)fail;
+- (nonnull instancetype)initWithSmallURL:(NSString * _Nonnull)small
+                               mediumURL:(NSString * _Nonnull)medium
+                                largeURL:(NSString * _Nonnull)large{
+    self = [super init];
+    if (self) {
+        _small = small;
+        _medium = medium;
+        _large = large;
+    }
+    return self;
+}
 
 @end

@@ -22,22 +22,28 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^WebserviceSuccessBlock)(NSData * _Nonnull data);
-typedef void(^WebserviceFailBlock)(NSError * _Nonnull error);
+@class NewsSource;
 
-@interface Webservice : NSObject
+@protocol DataDirectorDataSource
 
-@property (nonatomic, strong, readonly) NSURLSessionConfiguration * _Nonnull configuration;
-@property (nonatomic, strong, readonly) NSString * _Nonnull baseURL;
+- (void)allSourcesWithSuccess:(nonnull void (^)(NSArray * _Nonnull sources))success
+                         fail:(nonnull void(^)(NSError * _Nonnull error))fail;
+- (void)newsForSource:(NewsSource * _Nonnull)source
+          withSuccess:(nonnull void(^)(NSArray * _Nonnull news))success
+                 fail:(nonnull void(^)(NSError * _Nonnull error))fail;
 
-- (nonnull instancetype)initWithConfiguration: (NSURLSessionConfiguration * _Nonnull)configuration
-                              baseURL: (NSString * _Nonnull)url;
+@end
 
-- (NSURLSession * _Nonnull)session;
-- (void)cancelAllTasks;
+static NSString * _Nonnull const kDataDirectorDidUpdateSourcesNotificationName = @"DataDirectorDidUpdateSources";
 
-- (void)fetchRawDataForRequest:(NSURLRequest * _Nonnull)request
-                       success:(WebserviceSuccessBlock _Nullable)success
-                          fail:(WebserviceFailBlock _Nullable)fail;
+@interface DataDirector : NSObject
+
+@property (nonatomic) id<DataDirectorDataSource> _Nonnull dataSource;
+@property (nonatomic) NSArray * _Nullable sources;
+
+- (nonnull instancetype)initWithDataSource:(id<DataDirectorDataSource> _Nonnull)dataSource;
+
+- (void)reloadNewsSources;
+- (void)allSources:(nullable void (^)(NSArray * _Nullable sources))completionHandler;
 
 @end

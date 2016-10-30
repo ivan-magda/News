@@ -20,24 +20,12 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-typedef void(^WebserviceSuccessBlock)(NSData * _Nonnull data);
-typedef void(^WebserviceFailBlock)(NSError * _Nonnull error);
+@class DataDirector;
 
-@interface Webservice : NSObject
+@interface NewsSourcesViewController : UITableViewController
 
-@property (nonatomic, strong, readonly) NSURLSessionConfiguration * _Nonnull configuration;
-@property (nonatomic, strong, readonly) NSString * _Nonnull baseURL;
-
-- (nonnull instancetype)initWithConfiguration: (NSURLSessionConfiguration * _Nonnull)configuration
-                              baseURL: (NSString * _Nonnull)url;
-
-- (NSURLSession * _Nonnull)session;
-- (void)cancelAllTasks;
-
-- (void)fetchRawDataForRequest:(NSURLRequest * _Nonnull)request
-                       success:(WebserviceSuccessBlock _Nullable)success
-                          fail:(WebserviceFailBlock _Nullable)fail;
+@property (nonatomic) DataDirector * _Nonnull dataDirector;
 
 @end
