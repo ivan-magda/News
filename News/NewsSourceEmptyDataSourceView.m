@@ -20,39 +20,32 @@
  * THE SOFTWARE.
  */
 
-#import "DataDirector.h"
-#import "NewsSource.h"
+#import "NewsSourceEmptyDataSourceView.h"
 
-@implementation DataDirector
+@implementation NewsSourceEmptyDataSourceView
 
-- (instancetype)initWithDataSource:(id<DataDirectorDataSource>)dataSource {
-    self = [super init];
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
-        _dataSource = dataSource;
+        [self configure];
     }
     return self;
 }
 
-- (void)reloadNewsSources {
-    [self allSources:nil];
-}
-
-- (void)allSources:(nullable void (^)(NSArray * _Nullable sources))completionHandler {
-    __weak DataDirector *weakSelf = self;
-    [_dataSource allSourcesWithSuccess:^(NSArray * _Nonnull sources) {
-        weakSelf.sources = sources;
-        [weakSelf didUpdateSources];
-        if (completionHandler != nil) completionHandler(weakSelf.sources);
-    } fail:^(NSError * _Nonnull error) {
-        weakSelf.sources = nil;
-        [weakSelf didUpdateSources];
-        if (completionHandler != nil) completionHandler(weakSelf.sources);
-    }];
-}
-
-- (void)didUpdateSources {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kDataDirectorDidUpdateSourcesNotificationName
-                                                        object:_sources];
+- (void)configure {
+    CGFloat horizontalMargin = 16.0;
+    CGRect originalFrame = self.frame;
+    CGRect finalFrame = CGRectMake(horizontalMargin, 0.0, originalFrame.size.width - horizontalMargin * 2,
+                                   originalFrame.size.height);
+    
+    UILabel *label = [[UILabel alloc] initWithFrame: finalFrame];
+    label.numberOfLines = 0;
+    label.font = [UIFont boldSystemFontOfSize:19];
+    label.text = @"There's no available sources. Pull to refresh and get one!";
+    label.textColor = [UIColor lightGrayColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    
+    [self addSubview:label];
 }
 
 @end

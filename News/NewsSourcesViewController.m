@@ -23,6 +23,7 @@
 #import "NewsSourcesViewController.h"
 #import "DataDirector.h"
 #import "NewsSource.h"
+#import "NewsSourceEmptyDataSourceView.h"
 
 static NSString * const kCellReuseIdentifier = @"SourceCell";
 
@@ -32,6 +33,9 @@ static NSString * const kCellReuseIdentifier = @"SourceCell";
 
 @implementation NewsSourcesViewController {
     NSArray *_sources;
+    
+    UIRefreshControl *_refreshControl;
+    NewsSourceEmptyDataSourceView *_emptyDataSourceView;
 }
 
 // MARK: View Life Cycle
@@ -50,15 +54,45 @@ static NSString * const kCellReuseIdentifier = @"SourceCell";
 // MARK: Private Helpers
 
 - (void)configure {
+    _sources = [_dataDirector.sources copy];
+    _emptyDataSourceView = [[NewsSourceEmptyDataSourceView alloc]initWithFrame:self.view.bounds];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:kDataDirectorDidUpdateSourcesNotificationName object:nil];
+    
+    self.tableView.refreshControl = [UIRefreshControl new];
+    [self.tableView.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)updateData {
+    [self.tableView.refreshControl endRefreshing];
     _sources = [_dataDirector.sources copy];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    if (self.tableView.backgroundView == nil) {
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else {
+        [self.tableView reloadData];
+    }
+}
+
+- (void)fetchData {
+    [_dataDirector reloadNewsSources];
 }
 
 // MARK: UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    NSInteger numberOfSections = 0;
+    if (_sources.count > 0) {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        numberOfSections = 1;
+        self.tableView.backgroundView = nil;
+    } else {
+        self.tableView.backgroundView = _emptyDataSourceView;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    
+    return numberOfSections;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _sources.count;

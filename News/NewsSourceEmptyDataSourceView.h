@@ -20,39 +20,8 @@
  * THE SOFTWARE.
  */
 
-#import "DataDirector.h"
-#import "NewsSource.h"
+#import <UIKit/UIKit.h>
 
-@implementation DataDirector
-
-- (instancetype)initWithDataSource:(id<DataDirectorDataSource>)dataSource {
-    self = [super init];
-    if (self) {
-        _dataSource = dataSource;
-    }
-    return self;
-}
-
-- (void)reloadNewsSources {
-    [self allSources:nil];
-}
-
-- (void)allSources:(nullable void (^)(NSArray * _Nullable sources))completionHandler {
-    __weak DataDirector *weakSelf = self;
-    [_dataSource allSourcesWithSuccess:^(NSArray * _Nonnull sources) {
-        weakSelf.sources = sources;
-        [weakSelf didUpdateSources];
-        if (completionHandler != nil) completionHandler(weakSelf.sources);
-    } fail:^(NSError * _Nonnull error) {
-        weakSelf.sources = nil;
-        [weakSelf didUpdateSources];
-        if (completionHandler != nil) completionHandler(weakSelf.sources);
-    }];
-}
-
-- (void)didUpdateSources {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kDataDirectorDidUpdateSourcesNotificationName
-                                                        object:_sources];
-}
+@interface NewsSourceEmptyDataSourceView : UIView
 
 @end
