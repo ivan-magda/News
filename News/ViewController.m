@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "NewsApiClient.h"
 
 @interface ViewController ()
 
@@ -16,14 +17,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    NewsApiClient *client = [NewsApiClient sharedInstance];
+    [client allSourcesWithSuccess:^(NSDictionary * _Nonnull json) {
+        NSLog(@"Fetched sources:\n%@", json);
+    } fail:^(NSError * _Nonnull error) {
+        NSLog(@"Failed fetch sources with error: %@", error.localizedDescription);
+    }];
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end

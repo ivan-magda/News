@@ -15,6 +15,8 @@
 		7565F62B1DC5DED800C523A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7565F6291DC5DED800C523A5 /* LaunchScreen.storyboard */; };
 		7565F6361DC5DED800C523A5 /* NewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7565F6351DC5DED800C523A5 /* NewsTests.m */; };
 		7565F6411DC5DED800C523A5 /* NewsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7565F6401DC5DED800C523A5 /* NewsUITests.m */; };
+		7565F6521DC5E42600C523A5 /* Webservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 7565F6511DC5E42600C523A5 /* Webservice.m */; };
+		7565F6591DC5F19400C523A5 /* NewsApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7565F6581DC5F19400C523A5 /* NewsApiClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		7565F63C1DC5DED800C523A5 /* NewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7565F6401DC5DED800C523A5 /* NewsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsUITests.m; sourceTree = "<group>"; };
 		7565F6421DC5DED800C523A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7565F6501DC5E42600C523A5 /* Webservice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Webservice.h; sourceTree = "<group>"; };
+		7565F6511DC5E42600C523A5 /* Webservice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Webservice.m; sourceTree = "<group>"; };
+		7565F6571DC5F19400C523A5 /* NewsApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsApiClient.h; sourceTree = "<group>"; };
+		7565F6581DC5F19400C523A5 /* NewsApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsApiClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,12 +109,9 @@
 			children = (
 				7565F61E1DC5DED800C523A5 /* AppDelegate.h */,
 				7565F61F1DC5DED800C523A5 /* AppDelegate.m */,
-				7565F6211DC5DED800C523A5 /* ViewController.h */,
-				7565F6221DC5DED800C523A5 /* ViewController.m */,
-				7565F6241DC5DED800C523A5 /* Main.storyboard */,
-				7565F6271DC5DED800C523A5 /* Assets.xcassets */,
-				7565F6291DC5DED800C523A5 /* LaunchScreen.storyboard */,
-				7565F62C1DC5DED800C523A5 /* Info.plist */,
+				7565F6531DC5E46A00C523A5 /* Network */,
+				7565F64F1DC5DF5A00C523A5 /* Controller */,
+				7565F64E1DC5DF3C00C523A5 /* Assets */,
 				7565F61B1DC5DED800C523A5 /* Supporting Files */,
 			);
 			path = News;
@@ -117,6 +120,7 @@
 		7565F61B1DC5DED800C523A5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7565F62C1DC5DED800C523A5 /* Info.plist */,
 				7565F61C1DC5DED800C523A5 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -138,6 +142,36 @@
 				7565F6421DC5DED800C523A5 /* Info.plist */,
 			);
 			path = NewsUITests;
+			sourceTree = "<group>";
+		};
+		7565F64E1DC5DF3C00C523A5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				7565F6241DC5DED800C523A5 /* Main.storyboard */,
+				7565F6271DC5DED800C523A5 /* Assets.xcassets */,
+				7565F6291DC5DED800C523A5 /* LaunchScreen.storyboard */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		7565F64F1DC5DF5A00C523A5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7565F6211DC5DED800C523A5 /* ViewController.h */,
+				7565F6221DC5DED800C523A5 /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		7565F6531DC5E46A00C523A5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7565F6501DC5E42600C523A5 /* Webservice.h */,
+				7565F6511DC5E42600C523A5 /* Webservice.m */,
+				7565F6571DC5F19400C523A5 /* NewsApiClient.h */,
+				7565F6581DC5F19400C523A5 /* NewsApiClient.m */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +312,8 @@
 			files = (
 				7565F6231DC5DED800C523A5 /* ViewController.m in Sources */,
 				7565F6201DC5DED800C523A5 /* AppDelegate.m in Sources */,
+				7565F6591DC5F19400C523A5 /* NewsApiClient.m in Sources */,
+				7565F6521DC5E42600C523A5 /* Webservice.m in Sources */,
 				7565F61D1DC5DED800C523A5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
