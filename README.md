@@ -10,3 +10,8 @@ An application that let's you discover and read news. It's possible with using [
 This project is open-sourced software licensed under the MIT License.
 
 See the LICENSE file for more information.
+
+## Images
+<img src="https://github.com/vanyaland/News/blob/master/res/sources.png">
+<img src="https://github.com/vanyaland/News/blob/master/res/articles.png">
+<img src="https://github.com/vanyaland/News/blob/master/res/article.png">
