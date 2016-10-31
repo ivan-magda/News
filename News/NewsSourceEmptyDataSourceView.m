@@ -40,8 +40,8 @@
     
     UILabel *label = [[UILabel alloc] initWithFrame: finalFrame];
     label.numberOfLines = 0;
-    label.font = [UIFont boldSystemFontOfSize:19];
-    label.text = @"There's no available sources. Pull to refresh and get one!";
+    label.font = [UIFont systemFontOfSize:19 weight:UIFontWeightMedium];
+    label.text = @"No sources to show.\nPull to refresh.";
     label.textColor = [UIColor lightGrayColor];
     label.textAlignment = NSTextAlignmentCenter;
     

@@ -20,29 +20,30 @@
  * THE SOFTWARE.
  */
 
-#import "NewsSourcesViewController.h"
+#import "SourcesTableViewController.h"
 #import "DataDirector.h"
 #import "NewsSource.h"
 #import "NewsSourceEmptyDataSourceView.h"
+#import "ArticlesTableViewController.h"
 
 static NSString * const kCellReuseIdentifier = @"SourceCell";
+static NSString * const kShowNewsArticlesSegueIdentifier = @"NewsArticles";
 
-@interface NewsSourcesViewController ()
+@interface SourcesTableViewController ()
 
 @end
 
-@implementation NewsSourcesViewController {
+@implementation SourcesTableViewController {
     NSArray *_sources;
     
     UIRefreshControl *_refreshControl;
     NewsSourceEmptyDataSourceView *_emptyDataSourceView;
 }
 
-// MARK: View Life Cycle
+#pragma mark View Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     NSAssert(_dataDirector != nil, @"DataDirector must exist.");
     [self configure];
 }
@@ -51,7 +52,20 @@ static NSString * const kCellReuseIdentifier = @"SourceCell";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-// MARK: Private Helpers
+#pragma mark Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString: kShowNewsArticlesSegueIdentifier]) {
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        NewsSource *source = _sources[selectedIndexPath.row];
+        
+        ArticlesTableViewController *detailVC = (ArticlesTableViewController *)segue.destinationViewController;
+        detailVC.selectedSource = source;
+        detailVC.dataDirector = _dataDirector;
+    }
+}
+
+#pragma mark Private Helpers
 
 - (void)configure {
     _sources = [_dataDirector.sources copy];
@@ -78,7 +92,7 @@ static NSString * const kCellReuseIdentifier = @"SourceCell";
     [_dataDirector reloadNewsSources];
 }
 
-// MARK: UITableViewDataSource
+#pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSInteger numberOfSections = 0;

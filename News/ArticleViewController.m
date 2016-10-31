@@ -20,27 +20,32 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import "ArticleViewController.h"
+#import "NewsArticle.h"
 
-typedef void(^WebserviceSuccessBlock)(NSData * _Nonnull data);
-typedef void(^WebserviceFailBlock)(NSError * _Nonnull error);
+@interface ArticleViewController ()
 
-@interface Webservice : NSObject
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
-@property (nonatomic, strong, readonly) NSURLSessionConfiguration * _Nonnull configuration;
-@property (nonatomic, strong, readonly) NSString * _Nonnull baseURL;
+@end
 
-- (nonnull instancetype)initWithConfiguration: (NSURLSessionConfiguration * _Nonnull)configuration
-                              baseURL: (NSString * _Nonnull)url;
+@implementation ArticleViewController
 
-- (NSURLSession * _Nonnull)session;
-- (void)cancelAllTasks;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSAssert(_article != nil, @"Article must be setted.");
+    [self configure];
+}
 
-- (NSURL * _Nullable)buildURLWithBaseURL:(NSURL * _Nonnull)baseURL
-                        methodParameters:(NSDictionary *_Nullable)parameters;
-
-- (void)fetchRawDataForRequest:(NSURLRequest * _Nonnull)request
-                       success:(WebserviceSuccessBlock _Nullable)success
-                          fail:(WebserviceFailBlock _Nullable)fail;
+- (void)configure {
+    self.titleLabel.text = _article.title;
+    self.descriptionLabel.text = _article.detail;
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateStyle = NSDateFormatterFullStyle;
+    self.subtitleLabel.text = [formatter stringFromDate:_article.publishDate];
+}
 
 @end

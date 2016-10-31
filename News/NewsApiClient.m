@@ -22,18 +22,22 @@
 
 #import "NewsApiClient.h"
 #import "NewsBuilder.h"
+#import "NewsSource.h"
 
 static NSString * const kApplicationKey = @"4ccf7703d7c84b959e5a1913eedf07e2";
-static NSString * const kBaseURL = @"https://newsapi.org/v1/";
+static NSString * const kBaseUrlString = @"https://newsapi.org/v1/";
+static NSString * const kErrorDomain = @"NewsApiClient";
 
-@implementation NewsApiClient
+@implementation NewsApiClient {
+    NSURL *_newsBaseURL;
+}
 
 + (nonnull instancetype)sharedInstance {
     static NewsApiClient *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-        sharedInstance = [[NewsApiClient alloc]initWithConfiguration:config baseURL:kBaseURL];
+        sharedInstance = [[NewsApiClient alloc]initWithConfiguration:config baseURL:kBaseUrlString];
     });
     return sharedInstance;
 }
@@ -48,33 +52,81 @@ static NSString * const kBaseURL = @"https://newsapi.org/v1/";
     return self;
 }
 
+- (NSURL *)newsBaseURL {
+    if (_newsBaseURL == nil) {
+        _newsBaseURL = [NSURL URLWithString: kBaseUrlString];
+    }
+    return _newsBaseURL;
+}
+
 - (void)allSourcesWithSuccess:(nullable void (^)(NSArray * _Nullable sources))success
                          fail:(nullable void (^)(NSError * _Nonnull error))fail {
-    NSURL *url = [NSURL URLWithString:@"sources" relativeToURL:[NSURL URLWithString:self.baseURL]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURL *url = [[self newsBaseURL] URLByAppendingPathComponent: @"sources"];
+    NSURLRequest *request = [NSURLRequest requestWithURL: url];
     
     if (url == nil) {
-        fail([NSError errorWithDomain:@"NewsApiClient" code:10
-                             userInfo:@{NSLocalizedDescriptionKey : @"URL is nil"}]);
+        fail([NSError errorWithDomain:kErrorDomain code:10
+                             userInfo:@{NSLocalizedDescriptionKey : @"Failed to construct URL."}]);
         return;
     }
     
     [self fetchRawDataForRequest:request success:^(NSData * _Nonnull data) {
-        NSError *error = nil;
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+        NSDictionary *json = [self jsonObjectFromData: data];
         
-        if (error != nil) {
-            NSLog(@"Failed to fetch sources: %@", error.localizedDescription);
-            fail(error);
-            return ;
+        if (json == nil) {
+            NSString *message = [NSString stringWithFormat:@"Failed to serialize JSON with data: %@", data];
+            fail([NSError errorWithDomain:kErrorDomain code:11
+                                 userInfo:@{NSLocalizedDescriptionKey: message}]);
         }
         
         success([self parseSourcesJSON:json]);
-    } fail:fail];
+    } fail: fail];
+}
+
+- (void)articlesForSource:(NewsSource * _Nonnull)source
+              withSuccess:(nonnull void (^)(NSArray * _Nullable articles))success
+                     fail:(nonnull void (^)(NSError * _Nonnull error))fail {
+    NSMutableDictionary *parameters = [@{
+                                 @"source": source.identifier,
+                                 @"apiKey": kApplicationKey
+                                 } mutableCopy];
+    if (source.sortTypes.count > 0) parameters[@"sortBy"] = source.sortTypes.firstObject;
+    NSURL *URL = [[self newsBaseURL] URLByAppendingPathComponent: @"articles"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:
+                             [self buildURLWithBaseURL:URL methodParameters:parameters]];
+    
+    [self fetchRawDataForRequest:request success:^(NSData * _Nonnull data) {
+        NSDictionary *json = [self jsonObjectFromData: data];
+        
+        if (json == nil) {
+            NSString *message = [NSString stringWithFormat:@"Failed to serialize JSON with data: %@", data];
+            fail([NSError errorWithDomain:kErrorDomain code:11
+                                 userInfo:@{NSLocalizedDescriptionKey: message}]);
+        }
+        
+        success([self parseArticlesJSON: json]);
+    } fail: fail];
+    
+}
+
+- (NSDictionary *)jsonObjectFromData:(NSData *)data {
+    NSError *error = nil;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments
+                                                           error:&error];
+    if (error != nil) {
+        NSLog(@"Failed to serialize json: %@", error.localizedDescription);
+        return nil;
+    }
+    
+    return json;
 }
 
 - (NSArray *)parseSourcesJSON:(NSDictionary *)json {
     return [NewsBuilder buildSourcesFromJSON:json];
+}
+
+- (NSArray *)parseArticlesJSON:(NSDictionary *)json {
+    return [NewsBuilder buildArticlesFromJSON: json];
 }
 
 @end

@@ -24,7 +24,7 @@
 #import "NewsApiClient.h"
 #import "CannedDataDirectorDataSource.h"
 #import "DataDirector.h"
-#import "NewsSourcesViewController.h"
+#import "SourcesTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -46,7 +46,7 @@
     _dataDirector = [[DataDirector alloc] initWithDataSource:dataSourceDirector];
     
     UINavigationController *navigationVC = (UINavigationController *) [_window rootViewController];
-    NewsSourcesViewController *sourcesVC = (NewsSourcesViewController *) navigationVC.viewControllers[0];
+    SourcesTableViewController *sourcesVC = (SourcesTableViewController *) navigationVC.viewControllers[0];
     sourcesVC.dataDirector = _dataDirector;
 }
 

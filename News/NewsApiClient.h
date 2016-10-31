@@ -23,10 +23,16 @@
 #import <Foundation/Foundation.h>
 #import "Webservice.h"
 
+@class NewsSource;
+
 @interface NewsApiClient : Webservice
 
 + (nonnull instancetype)sharedInstance;
+
 - (void)allSourcesWithSuccess:(nullable void (^)(NSArray * _Nullable sources))success
                          fail:(nullable void (^)(NSError * _Nonnull error))fail;
+- (void)articlesForSource:(NewsSource * _Nonnull)source
+              withSuccess:(nonnull void (^)(NSArray * _Nullable articles))success
+                     fail:(nonnull void (^)(NSError * _Nonnull error))fail;
 
 @end

@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		751142171DC79A1800F299E1 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 751142161DC79A1800F299E1 /* ArticleViewController.m */; };
 		7561AADF1DC62F010090F85D /* NewsSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7561AADE1DC62F010090F85D /* NewsSource.m */; };
 		7561AAE31DC62FC50090F85D /* NewsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7561AAE21DC62FC50090F85D /* NewsBuilder.m */; };
 		7561AAE61DC638E00090F85D /* NewsSourceLogo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7561AAE51DC638E00090F85D /* NewsSourceLogo.m */; };
 		7561AAEA1DC644F60090F85D /* DataDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7561AAE91DC644F60090F85D /* DataDirector.m */; };
 		7561AAED1DC6479C0090F85D /* CannedDataDirectorDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7561AAEC1DC6479C0090F85D /* CannedDataDirectorDataSource.m */; };
 		7561AAF11DC659B10090F85D /* NewsSourceEmptyDataSourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7561AAF01DC659B10090F85D /* NewsSourceEmptyDataSourceView.m */; };
+		756220411DC71E1900EC0347 /* ArticlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 756220401DC71E1900EC0347 /* ArticlesTableViewController.m */; };
+		756220441DC71E9200EC0347 /* NewsArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 756220431DC71E9200EC0347 /* NewsArticle.m */; };
 		7565F61D1DC5DED800C523A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7565F61C1DC5DED800C523A5 /* main.m */; };
 		7565F6201DC5DED800C523A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7565F61F1DC5DED800C523A5 /* AppDelegate.m */; };
-		7565F6231DC5DED800C523A5 /* NewsSourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7565F6221DC5DED800C523A5 /* NewsSourcesViewController.m */; };
+		7565F6231DC5DED800C523A5 /* SourcesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7565F6221DC5DED800C523A5 /* SourcesTableViewController.m */; };
 		7565F6261DC5DED800C523A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7565F6241DC5DED800C523A5 /* Main.storyboard */; };
 		7565F6281DC5DED800C523A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7565F6271DC5DED800C523A5 /* Assets.xcassets */; };
 		7565F62B1DC5DED800C523A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7565F6291DC5DED800C523A5 /* LaunchScreen.storyboard */; };
@@ -43,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		751142151DC79A1800F299E1 /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
+		751142161DC79A1800F299E1 /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
 		7561AADD1DC62F010090F85D /* NewsSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsSource.h; sourceTree = "<group>"; };
 		7561AADE1DC62F010090F85D /* NewsSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsSource.m; sourceTree = "<group>"; };
 		7561AAE11DC62FC50090F85D /* NewsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsBuilder.h; sourceTree = "<group>"; };
@@ -55,12 +60,16 @@
 		7561AAEC1DC6479C0090F85D /* CannedDataDirectorDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CannedDataDirectorDataSource.m; sourceTree = "<group>"; };
 		7561AAEF1DC659B10090F85D /* NewsSourceEmptyDataSourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsSourceEmptyDataSourceView.h; sourceTree = "<group>"; };
 		7561AAF01DC659B10090F85D /* NewsSourceEmptyDataSourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsSourceEmptyDataSourceView.m; sourceTree = "<group>"; };
+		7562203F1DC71E1900EC0347 /* ArticlesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticlesTableViewController.h; sourceTree = "<group>"; };
+		756220401DC71E1900EC0347 /* ArticlesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticlesTableViewController.m; sourceTree = "<group>"; };
+		756220421DC71E9200EC0347 /* NewsArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsArticle.h; sourceTree = "<group>"; };
+		756220431DC71E9200EC0347 /* NewsArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsArticle.m; sourceTree = "<group>"; };
 		7565F6181DC5DED800C523A5 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7565F61C1DC5DED800C523A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7565F61E1DC5DED800C523A5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7565F61F1DC5DED800C523A5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7565F6211DC5DED800C523A5 /* NewsSourcesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsSourcesViewController.h; sourceTree = "<group>"; };
-		7565F6221DC5DED800C523A5 /* NewsSourcesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsSourcesViewController.m; sourceTree = "<group>"; };
+		7565F6211DC5DED800C523A5 /* SourcesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourcesTableViewController.h; sourceTree = "<group>"; };
+		7565F6221DC5DED800C523A5 /* SourcesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourcesTableViewController.m; sourceTree = "<group>"; };
 		7565F6251DC5DED800C523A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7565F6271DC5DED800C523A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7565F62A1DC5DED800C523A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -102,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		751142141DC78D5E00F299E1 /* EmptySourcesView */ = {
+			isa = PBXGroup;
+			children = (
+				7561AAEF1DC659B10090F85D /* NewsSourceEmptyDataSourceView.h */,
+				7561AAF01DC659B10090F85D /* NewsSourceEmptyDataSourceView.m */,
+			);
+			name = EmptySourcesView;
+			sourceTree = "<group>";
+		};
 		7561AAE01DC62F060090F85D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +127,7 @@
 				7561AAE21DC62FC50090F85D /* NewsBuilder.m */,
 				7561AAEE1DC64BCD0090F85D /* DataCentral */,
 				7561AAE71DC639910090F85D /* NewsSource */,
+				756220451DC71E9C00EC0347 /* NewsArticle */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -138,11 +157,19 @@
 		7561AAF21DC65B5A0090F85D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7561AAEF1DC659B10090F85D /* NewsSourceEmptyDataSourceView.h */,
-				7561AAF01DC659B10090F85D /* NewsSourceEmptyDataSourceView.m */,
 				7565F64E1DC5DF3C00C523A5 /* Assets */,
+				751142141DC78D5E00F299E1 /* EmptySourcesView */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		756220451DC71E9C00EC0347 /* NewsArticle */ = {
+			isa = PBXGroup;
+			children = (
+				756220421DC71E9200EC0347 /* NewsArticle.h */,
+				756220431DC71E9200EC0347 /* NewsArticle.m */,
+			);
+			name = NewsArticle;
 			sourceTree = "<group>";
 		};
 		7565F60F1DC5DED700C523A5 = {
@@ -172,8 +199,8 @@
 				7565F61F1DC5DED800C523A5 /* AppDelegate.m */,
 				7565F6531DC5E46A00C523A5 /* Network */,
 				7561AAE01DC62F060090F85D /* Model */,
-				7565F64F1DC5DF5A00C523A5 /* Controller */,
 				7561AAF21DC65B5A0090F85D /* View */,
+				7565F64F1DC5DF5A00C523A5 /* Controller */,
 				7565F61B1DC5DED800C523A5 /* Supporting Files */,
 			);
 			path = News;
@@ -219,8 +246,12 @@
 		7565F64F1DC5DF5A00C523A5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7565F6211DC5DED800C523A5 /* NewsSourcesViewController.h */,
-				7565F6221DC5DED800C523A5 /* NewsSourcesViewController.m */,
+				7565F6211DC5DED800C523A5 /* SourcesTableViewController.h */,
+				7565F6221DC5DED800C523A5 /* SourcesTableViewController.m */,
+				7562203F1DC71E1900EC0347 /* ArticlesTableViewController.h */,
+				756220401DC71E1900EC0347 /* ArticlesTableViewController.m */,
+				751142151DC79A1800F299E1 /* ArticleViewController.h */,
+				751142161DC79A1800F299E1 /* ArticleViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -372,16 +403,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7565F6231DC5DED800C523A5 /* NewsSourcesViewController.m in Sources */,
+				7565F6231DC5DED800C523A5 /* SourcesTableViewController.m in Sources */,
 				7561AAEA1DC644F60090F85D /* DataDirector.m in Sources */,
 				7565F6201DC5DED800C523A5 /* AppDelegate.m in Sources */,
+				751142171DC79A1800F299E1 /* ArticleViewController.m in Sources */,
 				7561AAE61DC638E00090F85D /* NewsSourceLogo.m in Sources */,
 				7565F6591DC5F19400C523A5 /* NewsApiClient.m in Sources */,
 				7561AAED1DC6479C0090F85D /* CannedDataDirectorDataSource.m in Sources */,
 				7561AADF1DC62F010090F85D /* NewsSource.m in Sources */,
 				7565F6521DC5E42600C523A5 /* Webservice.m in Sources */,
+				756220441DC71E9200EC0347 /* NewsArticle.m in Sources */,
 				7561AAE31DC62FC50090F85D /* NewsBuilder.m in Sources */,
 				7561AAF11DC659B10090F85D /* NewsSourceEmptyDataSourceView.m in Sources */,
+				756220411DC71E1900EC0347 /* ArticlesTableViewController.m in Sources */,
 				7565F61D1DC5DED800C523A5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

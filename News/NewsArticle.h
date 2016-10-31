@@ -20,12 +20,20 @@
  * THE SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@class DataDirector;
+@interface NewsArticle : NSObject
 
-@interface NewsSourcesViewController : UITableViewController
+@property (nonatomic) NSString * _Nonnull author;
+@property (nonatomic) NSString * _Nonnull title;
+@property (nonatomic) NSString * _Nonnull detail;
+@property (nonatomic) NSURL * _Nonnull url;
+@property (nonatomic) NSDate * _Nonnull publishDate;
 
-@property (nonatomic) DataDirector * _Nonnull dataDirector;
+- (nonnull instancetype)initWithAuthor:(NSString * _Nullable)author
+                                 title:(NSString * _Nonnull)title
+                                detail:(NSString * _Nonnull)detail
+                                   url:(NSURL * _Nonnull)url
+                           publishDate:(NSDate * _Nonnull)date;
 
 @end

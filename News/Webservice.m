@@ -131,6 +131,22 @@ void performOnMain(Block block) {
     return task;
 }
 
+- (NSURL * _Nullable)buildURLWithBaseURL:(NSURL * _Nonnull)baseURL methodParameters:(NSDictionary *_Nullable)parameters {
+    NSURLComponents *components = [NSURLComponents componentsWithURL:baseURL resolvingAgainstBaseURL: NO];
+    
+    if (parameters.count > 0) {
+        __block NSMutableArray *queryItems = [NSMutableArray arrayWithCapacity:parameters.count];
+        [parameters enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
+            NSURLQueryItem *item = [NSURLQueryItem queryItemWithName:key value: obj];
+            [queryItems addObject:item];
+        }];
+        
+        components.queryItems = [queryItems copy];
+    }
+    
+    return components.URL;
+}
+
 - (void)debugLog: (NSString *)message {
     NSLog(@"%@", message);
 }

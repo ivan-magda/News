@@ -23,10 +23,24 @@
 #import "NewsBuilder.h"
 #import "NewsSource.h"
 #import "NewsSourceLogo.h"
+#import "NewsArticle.h"
 
 @implementation NewsBuilder
 
-+ (NewsSource * _Nullable)buildFromJSON:(NSDictionary * _Nonnull)json {
+#pragma mark NewsSource
+
++ (nonnull NSDateFormatter *)sharedDateFormatter {
+    static NSDateFormatter *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [NSDateFormatter new];
+        sharedInstance.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+        sharedInstance.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
+    });
+    return sharedInstance;
+}
+
++ (NewsSource * _Nullable)buildSourceFromJSON:(NSDictionary * _Nonnull)json {
     NSString *identifier = json[@"id"];
     NSString *name = json[NSStringFromSelector(@selector(name))];
     NSString *detail = json[NSStringFromSelector(@selector(description))];
@@ -62,8 +76,40 @@
     
     NSArray *jsonSources = jsonCopy[@"sources"];
     [jsonSources enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NewsSource *newsSource = [NewsBuilder buildFromJSON:obj];
+        NewsSource *newsSource = [NewsBuilder buildSourceFromJSON:obj];
         [sources addObject:newsSource];
+    }];
+    
+    return [sources copy];
+}
+
+#pragma mark NewsArticle
+
++ (NewsArticle * _Nullable)buildArticleFromJSON:(NSDictionary * _Nonnull)json {
+    NSString *author = json[NSStringFromSelector(@selector(author))];
+    NSString *title = json[NSStringFromSelector(@selector(title))];
+    NSString *detail = json[@"description"];
+    NSString *urlString = json[NSStringFromSelector(@selector(url))];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSString *dateString = json[@"publishedAt"];
+    NSDate *date = [[self sharedDateFormatter] dateFromString:dateString];
+    
+    if ([author isKindOfClass:[NSNull class]])author = nil;
+    if (author == nil || title == nil || detail == nil || url == nil || date == nil) {
+        NSLog(@"Failed parse some part of the JSON.");
+    }
+    
+    return [[NewsArticle alloc]initWithAuthor:author title:title detail:detail url:url publishDate:date];
+}
+
++ (NSArray * _Nullable)buildArticlesFromJSON:(NSDictionary * _Nonnull)json {
+    NSDictionary *jsonCopy = [json copy];
+    NSMutableArray *sources = [NSMutableArray arrayWithCapacity:60];
+    
+    NSArray *jsonSources = jsonCopy[@"articles"];
+    [jsonSources enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NewsArticle *article = [self buildArticleFromJSON:obj];
+        [sources addObject: article];
     }];
     
     return [sources copy];

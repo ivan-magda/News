@@ -39,9 +39,8 @@
     [_apiClient allSourcesWithSuccess:success fail:fail];
 }
 
-- (void)newsForSource:(NewsSource *)source withSuccess:(void (^)(NSArray * _Nonnull))success fail:(void (^)(NSError * _Nonnull))fail {
-    NSLog(@"Not implemented");
-    exit(-1);
+- (void)articlesForSource:(NewsSource *)source withSuccess:(void (^)(NSArray * _Nonnull))success fail:(void (^)(NSError * _Nonnull))fail {
+    [_apiClient articlesForSource:source withSuccess:success fail:fail];
 }
 
 @end

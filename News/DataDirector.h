@@ -28,7 +28,7 @@
 
 - (void)allSourcesWithSuccess:(nonnull void (^)(NSArray * _Nonnull sources))success
                          fail:(nonnull void(^)(NSError * _Nonnull error))fail;
-- (void)newsForSource:(NewsSource * _Nonnull)source
+- (void)articlesForSource:(NewsSource * _Nonnull)source
           withSuccess:(nonnull void(^)(NSArray * _Nonnull news))success
                  fail:(nonnull void(^)(NSError * _Nonnull error))fail;
 
@@ -38,7 +38,7 @@ static NSString * _Nonnull const kDataDirectorDidUpdateSourcesNotificationName =
 
 @interface DataDirector : NSObject
 
-@property (nonatomic) id<DataDirectorDataSource> _Nonnull dataSource;
+@property (nonatomic, readonly) id<DataDirectorDataSource> _Nonnull dataSource;
 @property (nonatomic) NSArray * _Nullable sources;
 
 - (nonnull instancetype)initWithDataSource:(id<DataDirectorDataSource> _Nonnull)dataSource;

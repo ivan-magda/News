@@ -23,10 +23,14 @@
 #import <Foundation/Foundation.h>
 
 @class NewsSource;
+@class NewsArticle;
 
 @interface NewsBuilder : NSObject
 
-+ (NewsSource * _Nullable)buildFromJSON:(NSDictionary * _Nonnull)json;
++ (NewsSource * _Nullable)buildSourceFromJSON:(NSDictionary * _Nonnull)json;
 + (NSArray * _Nullable)buildSourcesFromJSON:(NSDictionary * _Nonnull)json;
+
++ (NSArray * _Nullable)buildArticlesFromJSON:(NSDictionary * _Nonnull)json;
++ (NewsArticle * _Nullable)buildArticleFromJSON:(NSDictionary * _Nonnull)json;
 
 @end
