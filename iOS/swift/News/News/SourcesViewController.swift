@@ -34,7 +34,7 @@ class SourcesViewController: UIViewController {
     
     var newsWebservice: NewsWebservice!
     fileprivate var sources = [Source]()
-    private let dataSource = SourcesTableViewDataSource()
+    fileprivate let dataSource = SourcesTableViewDataSource()
     
     // MARK: View Lifecycle
     
@@ -51,26 +51,36 @@ class SourcesViewController: UIViewController {
         tableView.delegate = dataSource;
     }
     
-    private func fetchData() {
+}
+
+// MARK: - SourcesViewController (Data Source)  -
+
+extension SourcesViewController {
+    
+    fileprivate func fetchData() {
         newsWebservice.allSources { [weak self] result in
             switch result {
             case .error(_):
                 self?.presentAlertWith(message: "Failed to load sources")
-            case .success(let sources):
-                self?.updateDataSource(with: sources)
+            case .success(let newSources):
+                self?.updateDataSource(with: newSources)
             }
         }
     }
     
-    private func presentAlertWith(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-    private func updateDataSource(with newData: [Source]) {
+    fileprivate func updateDataSource(with newData: [Source]) {
         dataSource.update(with: newData)
         tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
     }
     
+}
+
+// MARK: - SourcesViewController (UI Methods) -
+
+extension SourcesViewController {
+    fileprivate func presentAlertWith(title: String = "Error", message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }
