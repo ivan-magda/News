@@ -22,13 +22,9 @@
 
 import UIKit
 
-private enum SegueIdentifier: String {
-    case showArticles = "ShowArticles"
-}
+// MARK: ArticlesViewController: UIViewController
 
-// MARK: SourcesViewController: UIViewController
-
-final class SourcesViewController: UIViewController {
+final class ArticlesViewController: UIViewController {
     
     // MARK: IBOutlet
     
@@ -37,64 +33,52 @@ final class SourcesViewController: UIViewController {
     // MARK: Properties
     
     var newsWebservice: NewsWebservice!
+    var source: Source!
     
-    fileprivate let dataSource = SourcesTableViewDataSource()
-    fileprivate var sources = [Source]()
+    fileprivate let dataSource = ArticlesTableViewDataSource()
     
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        assert(newsWebservice != nil && source != nil)
+        
         configure()
         fetchData()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else { return }
-        switch identifier {
-        case SegueIdentifier.showArticles.rawValue:
-            let selectedSource = sender as! Source
-            
-            let articlesVC = segue.destination as! ArticlesViewController
-            articlesVC.newsWebservice = newsWebservice
-            articlesVC.source = selectedSource
-        default:
-            assert(false, "Unexpected segue.")
-        }
     }
     
     // MARK: Private
     
     private func configure() {
-        tableView.dataSource = dataSource;
-        tableView.delegate = dataSource;
+        title = source.name
         
-        weak var weakSelf = self
-        dataSource.didSelect = weakSelf?.didSelectSource
-    }
-    
-    private func didSelectSource(_ source: Source) {
-        performSegue(withIdentifier: SegueIdentifier.showArticles.rawValue, sender: source)
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
+        
+        dataSource.didSelect = { [weak self] article in
+            print(article)
+        }
     }
     
 }
 
 // MARK: - SourcesViewController (Data Source)  -
 
-extension SourcesViewController {
+extension ArticlesViewController {
     
     fileprivate func fetchData() {
-        newsWebservice.allSources { [weak self] result in
+        newsWebservice.articles(for: source) { [weak self] result in
             switch result {
             case .error(_):
-                self?.presentAlertWith(message: "Failed to load sources")
-            case .success(let newSources):
-                self?.updateDataSource(with: newSources)
+                self?.presentAlertWith(message: "Failed to load articles")
+            case .success(let newArticles):
+                self?.updateDataSource(with: newArticles)
             }
         }
     }
     
-    fileprivate func updateDataSource(with newData: [Source]) {
+    fileprivate func updateDataSource(with newData: [Article]) {
         dataSource.update(with: newData)
         tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
     }

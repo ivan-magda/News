@@ -23,6 +23,8 @@
 import Foundation
 import Network
 
+// MARK: NewsWebservice
+
 final class NewsWebservice {
     
     // MARK: Resources
@@ -33,7 +35,7 @@ final class NewsWebservice {
             guard let json = result as? JSONDictionary,
                 let jsonSources = json["sources"] as? [JSONDictionary] else { return nil }
             return jsonSources.flatMap { Source($0) }
-        }
+    }
     )
     
     // MARK: Properties
@@ -50,5 +52,37 @@ final class NewsWebservice {
     
     func allSources(_ completion: @escaping (Result<[Source]>) -> ()) {
         webservice.load(NewsWebservice.allSources, update: completion)
+    }
+    
+    func articles(for source: Source, _ completion: @escaping (Result<[Article]>) -> ()) {
+        var methodParameters = [
+            "source": source.id,
+            "apiKey": Constants.newsApiApplicationKey.rawValue
+        ]
+        if source.sortTypes.count > 0 { methodParameters["sortBy"] = source.sortTypes.first! }
+        
+        guard let URL = url(withPath: "articles", and: methodParameters) else { return print("URL is nil") }
+        let resource: Resource<[Article]> = Resource(
+            url: URL,
+            parseJSON: { result in
+                guard let json = result as? JSONDictionary,
+                    let jsonArticles = json["articles"] as? [JSONDictionary] else { return nil }
+                return jsonArticles.flatMap { Article($0) }
+            }
+        )
+        webservice.load(resource, update: completion)
+    }
+    
+}
+
+// MARK: - NewsWebservice (Private Helpers) -
+
+extension NewsWebservice {
+    fileprivate func url(withPath pathExtension: String? = nil, and parameters: [String: Any]? = nil) -> URL? {
+        var components = URLComponents(string: Constants.newsApiBaseUrl.rawValue)!
+        components.path += pathExtension ?? ""
+        components.queryItems = parameters?.flatMap { URLQueryItem(name: $0, value: "\($1)") }
+        
+        return components.url
     }
 }

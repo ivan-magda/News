@@ -22,16 +22,16 @@
 
 import UIKit
 
-private let cellReuseIdentifier = "SourceCell"
+private let cellReuseIdentifier = "ArticleCell"
 
 // MARK: SourcesTableViewDataSource: NSObject
 
-final class SourcesTableViewDataSource: NSObject {
+final class ArticlesTableViewDataSource: NSObject {
     
     // MARK: Properties
     
-    var didSelect: ((Source) -> ())? = { _ in }
-    fileprivate var sources = [Source]()
+    var didSelect: ((Article) -> ())? = { _ in }
+    fileprivate var articles = [Article]()
     
     // MARK: Init
     
@@ -39,27 +39,27 @@ final class SourcesTableViewDataSource: NSObject {
         super.init()
     }
     
-    init(_ sources: [Source]) {
-        self.sources = sources
+    init(_ sources: [Article]) {
+        self.articles = sources
         super.init()
     }
     
     // MARK: Public
     
-    func update(with newData: [Source]) {
-        sources = newData
+    func update(with newData: [Article]) {
+        articles = newData
     }
     
 }
 
-// MARK: - SourcesViewController: UITableViewDataSource -
+// MARK: - ArticlesTableViewDataSource: UITableViewDataSource -
 
-extension SourcesTableViewDataSource: UITableViewDataSource {
+extension ArticlesTableViewDataSource: UITableViewDataSource {
     
     // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sources.count
+        return articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,21 +71,27 @@ extension SourcesTableViewDataSource: UITableViewDataSource {
         configure(cell, at: indexPath)
     }
     
-    // MARK: Private Helpers
+    // MARK: Private
+    
+    private static var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        return dateFormatter
+    }()
     
     private func configure(_ cell: UITableViewCell, at indexPath: IndexPath) {
-        let source = sources[indexPath.row]
-        cell.textLabel?.text = source.name
-        cell.detailTextLabel?.text = source.category
+        let article = articles[indexPath.row]
+        cell.textLabel?.text = article.title
+        cell.detailTextLabel?.text = ArticlesTableViewDataSource.dateFormatter.string(from: article.publishDate)
     }
     
 }
 
-// MARK: - SourcesViewController: UITableViewDelegate -
+// MARK: - ArticlesTableViewDataSource: UITableViewDelegate -
 
-extension SourcesTableViewDataSource: UITableViewDelegate {
+extension ArticlesTableViewDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        didSelect?(sources[indexPath.row])
+        didSelect?(articles[indexPath.row])
     }
 }
