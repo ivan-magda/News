@@ -20,35 +20,35 @@
  * THE SOFTWARE.
  */
 
-import UIKit
+import Foundation
 import Network
 
-// MARK: AppDelegate: UIResponder, UIApplicationDelegate
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+final class NewsWebservice {
+    
+    // MARK: Resources
+    
+    private static let allSources: Resource<[Source]> = Resource(
+        url: URL(string: "\(Constants.newsApiBaseUrl.rawValue)sources")!,
+        parseJSON: { result in
+            guard let json = result as? JSONDictionary,
+                let jsonSources = json["sources"] as? [JSONDictionary] else { return nil }
+            return jsonSources.flatMap { Source($0) }
+        }
+    )
+    
     // MARK: Properties
     
-    var window: UIWindow?
-    private let newsWebservice: NewsWebservice = {
-        let cachedWebservice = CachedWebservice(Webservice())
-        return NewsWebservice(cachedWebservice)
-    }()
-
-    // MARK: UIApplicationDelegate
+    private let webservice: CachedWebservice
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        configure()
-        return true
+    // MARK: Init
+    
+    init(_ webservice: CachedWebservice) {
+        self.webservice = webservice
     }
     
-    // MARK: Private
+    // MARK: Fetch data
     
-    private func configure() {
-        let nc = window!.rootViewController as! UINavigationController
-        let sourcesVC = nc.viewControllers[0] as! SourcesViewController
-        sourcesVC.newsWebservice = newsWebservice
+    func allSources(_ completion: @escaping (Result<[Source]>) -> ()) {
+        webservice.load(NewsWebservice.allSources, update: completion)
     }
-    
 }

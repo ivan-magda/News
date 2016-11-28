@@ -20,35 +20,39 @@
  * THE SOFTWARE.
  */
 
-import UIKit
-import Network
+import Foundation
 
-// MARK: AppDelegate: UIResponder, UIApplicationDelegate
+struct Source {
+    let id: String
+    let name: String
+    var detail: String?
+    let url: String
+    let category: String
+    let sortTypes: [String]
+    let logo: SourceLogo
+}
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    // MARK: Properties
-    
-    var window: UIWindow?
-    private let newsWebservice: NewsWebservice = {
-        let cachedWebservice = CachedWebservice(Webservice())
-        return NewsWebservice(cachedWebservice)
-    }()
-
-    // MARK: UIApplicationDelegate
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        configure()
-        return true
+extension Source {
+    init?(_ json: [String: Any]) {
+        guard let id = json["id"] as? String,
+            let name = json["name"] as? String,
+            let url = json["url"] as? String,
+            let category = json["category"] as? String,
+            let sortTypes = json["sortBysAvailable"] as? [String],
+            let logosUrls = json["urlsToLogos"] as? [String: Any],
+            let small = logosUrls["small"] as? String,
+            let medium = logosUrls["medium"] as? String,
+            let large = logosUrls["large"] as? String else {
+                return nil
+        }
+        let detail = json["detail"] as? String
+        
+        self.id = id
+        self.name = name
+        self.detail = detail
+        self.url = url
+        self.category = category
+        self.sortTypes = sortTypes
+        self.logo = SourceLogo(small: small, medium: medium, large: large)
     }
-    
-    // MARK: Private
-    
-    private func configure() {
-        let nc = window!.rootViewController as! UINavigationController
-        let sourcesVC = nc.viewControllers[0] as! SourcesViewController
-        sourcesVC.newsWebservice = newsWebservice
-    }
-    
 }

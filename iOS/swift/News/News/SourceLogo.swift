@@ -20,35 +20,10 @@
  * THE SOFTWARE.
  */
 
-import UIKit
-import Network
+import Foundation
 
-// MARK: AppDelegate: UIResponder, UIApplicationDelegate
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    // MARK: Properties
-    
-    var window: UIWindow?
-    private let newsWebservice: NewsWebservice = {
-        let cachedWebservice = CachedWebservice(Webservice())
-        return NewsWebservice(cachedWebservice)
-    }()
-
-    // MARK: UIApplicationDelegate
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        configure()
-        return true
-    }
-    
-    // MARK: Private
-    
-    private func configure() {
-        let nc = window!.rootViewController as! UINavigationController
-        let sourcesVC = nc.viewControllers[0] as! SourcesViewController
-        sourcesVC.newsWebservice = newsWebservice
-    }
-    
+struct SourceLogo {
+    let small: String
+    let medium: String
+    let large: String
 }

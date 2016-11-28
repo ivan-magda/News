@@ -20,24 +20,9 @@
  * THE SOFTWARE.
  */
 
-import UIKit
-import Network
+import Foundation
 
-class ViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let allSources: Resource<Any> = Resource(
-            url: URL(string: "https://newsapi.org/v1/sources")!,
-            parseJSON: { $0 }
-        )
-        
-        let webservice = Webservice()
-        let cachedWebservice = CachedWebservice(webservice)
-        cachedWebservice.load(allSources) {
-            print($0)
-        }
-    }
-    
+enum Constants: String {
+    case newsApiApplicationKey = "4ccf7703d7c84b959e5a1913eedf07e2"
+    case newsApiBaseUrl = "https://newsapi.org/v1/"
 }
