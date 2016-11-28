@@ -24,8 +24,15 @@ import UIKit
 
 private let cellReuseIdentifier = "SourceCell"
 
+// MARK: SourcesTableViewDataSource: NSObject
+
 final class SourcesTableViewDataSource: NSObject {
+    
+    // MARK: Properties
+    
     fileprivate var sources = [Source]()
+    
+    // MARK: Init
     
     override init() {
         super.init()
@@ -36,14 +43,20 @@ final class SourcesTableViewDataSource: NSObject {
         super.init()
     }
     
+    // MARK: Public
+    
     func update(with newData: [Source]) {
         sources = newData
     }
+    
 }
 
 // MARK: - SourcesViewController: UITableViewDataSource -
 
 extension SourcesTableViewDataSource: UITableViewDataSource {
+    
+    // MARK: UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sources.count
     }
@@ -57,18 +70,20 @@ extension SourcesTableViewDataSource: UITableViewDataSource {
         configure(cell, at: indexPath)
     }
     
+    // MARK: Private Helpers
+    
     private func configure(_ cell: UITableViewCell, at indexPath: IndexPath) {
         let source = sources[indexPath.row]
         cell.textLabel?.text = source.name
         cell.detailTextLabel?.text = source.category
     }
+    
 }
 
 // MARK: - SourcesViewController: UITableViewDelegate -
 
 extension SourcesTableViewDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Select row at index path: \(indexPath.row)")
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
