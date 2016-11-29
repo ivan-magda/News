@@ -22,6 +22,10 @@
 
 import UIKit
 
+private enum SegueIdentifier: String {
+    case showArticle = "ShowArticle"
+}
+
 // MARK: ArticlesViewController: UIViewController
 
 final class ArticlesViewController: UIViewController {
@@ -48,6 +52,18 @@ final class ArticlesViewController: UIViewController {
         fetchData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else { return }
+        switch identifier {
+        case SegueIdentifier.showArticle.rawValue:
+            let selectedArticle = sender as! Article
+            let articleVC = segue.destination as! ArticleViewController
+            articleVC.article = selectedArticle
+        default:
+            assert(false, "Unexpected segue.")
+        }
+    }
+    
     // MARK: Private
     
     private func configure() {
@@ -56,9 +72,12 @@ final class ArticlesViewController: UIViewController {
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
         
-        dataSource.didSelect = { [weak self] article in
-            print(article)
-        }
+        weak var weakSelf = self
+        dataSource.didSelect = weakSelf?.showArticle
+    }
+    
+    private func showArticle(_ article: Article) {
+        performSegue(withIdentifier: SegueIdentifier.showArticle.rawValue, sender: article)
     }
     
 }

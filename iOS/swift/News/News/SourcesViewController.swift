@@ -70,10 +70,10 @@ final class SourcesViewController: UIViewController {
         tableView.delegate = dataSource;
         
         weak var weakSelf = self
-        dataSource.didSelect = weakSelf?.didSelectSource
+        dataSource.didSelect = weakSelf?.showSource
     }
     
-    private func didSelectSource(_ source: Source) {
+    private func showSource(_ source: Source) {
         performSegue(withIdentifier: SegueIdentifier.showArticles.rawValue, sender: source)
     }
     

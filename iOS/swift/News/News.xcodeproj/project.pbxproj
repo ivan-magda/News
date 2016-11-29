@@ -25,6 +25,8 @@
 		7550EF951DEBE4A70006E458 /* NewsWebservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550EF941DEBE4A70006E458 /* NewsWebservice.swift */; };
 		7550EF981DEBE59E0006E458 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550EF971DEBE59E0006E458 /* Constants.swift */; };
 		7550EF9A1DEC362A0006E458 /* SourcesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550EF991DEC362A0006E458 /* SourcesTableViewDataSource.swift */; };
+		7551E7851DED07A0002D0C32 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551E7841DED07A0002D0C32 /* ArticleViewController.swift */; };
+		7551E7891DED0D02002D0C32 /* ArticleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551E7881DED0D02002D0C32 /* ArticleContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		7550EF941DEBE4A70006E458 /* NewsWebservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsWebservice.swift; sourceTree = "<group>"; };
 		7550EF971DEBE59E0006E458 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7550EF991DEC362A0006E458 /* SourcesTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourcesTableViewDataSource.swift; sourceTree = "<group>"; };
+		7551E7841DED07A0002D0C32 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		7551E7881DED0D02002D0C32 /* ArticleContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				7550EF4D1DEBD1140006E458 /* Assets */,
+				7551E7881DED0D02002D0C32 /* ArticleContentView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 				7550EF991DEC362A0006E458 /* SourcesTableViewDataSource.swift */,
 				7501CBD21DEC690800A72A94 /* ArticlesViewController.swift */,
 				7501CBDD1DEC78B000A72A94 /* ArticlesTableViewDataSource.swift */,
+				7551E7841DED07A0002D0C32 /* ArticleViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -411,11 +417,13 @@
 				7501CBDC1DEC774400A72A94 /* AlertPresentable.swift in Sources */,
 				7550EF9A1DEC362A0006E458 /* SourcesTableViewDataSource.swift in Sources */,
 				7501CBD71DEC730600A72A94 /* Article.swift in Sources */,
+				7551E7891DED0D02002D0C32 /* ArticleContentView.swift in Sources */,
 				75111E2F1DEBC5BA000657BB /* SourcesViewController.swift in Sources */,
 				7550EF931DEBE1D50006E458 /* SourceLogo.swift in Sources */,
 				75111E2D1DEBC5BA000657BB /* AppDelegate.swift in Sources */,
 				7501CBD31DEC690800A72A94 /* ArticlesViewController.swift in Sources */,
 				7550EF901DEBE0DA0006E458 /* Source.swift in Sources */,
+				7551E7851DED07A0002D0C32 /* ArticleViewController.swift in Sources */,
 				7550EF981DEBE59E0006E458 /* Constants.swift in Sources */,
 				7501CBDE1DEC78B000A72A94 /* ArticlesTableViewDataSource.swift in Sources */,
 			);
