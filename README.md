@@ -7,6 +7,10 @@
 ## Description
 An application that let's you discover and read news. It's possible with using [News API](https://newsapi.org/), that provides simple and easy-to-use API that returns JSON metadata for the headlines currently published on a range of news sources and blogs.
 
+#### Written in:
+- Objective-C
+- Swift
+
 ## LICENSE
 This project is open-sourced software licensed under the MIT License.
 
