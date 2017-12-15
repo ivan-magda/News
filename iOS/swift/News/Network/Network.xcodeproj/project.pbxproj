@@ -196,7 +196,7 @@
 					7550EF591DEBD1D00006E458 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 6UNHY8UY6E;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					7550EF621DEBD1D00006E458 = {
@@ -404,7 +404,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -425,7 +426,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmagda.Network;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
