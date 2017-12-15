@@ -20,23 +20,23 @@
  * THE SOFTWARE.
  */
 
-#import "NewsArticle.h"
+#import "Article.h"
 
-@implementation NewsArticle
+@implementation Article
 
 - (nonnull instancetype)initWithAuthor:(NSString *_Nullable)author
                                  title:(NSString *_Nonnull)title
                                 detail:(NSString *_Nonnull)detail
                                    url:(NSURL *_Nonnull)url
                            publishDate:(NSDate *_Nonnull)date {
-    self = [super init];
-    if (self) {
+    if (self = [super init]) {
         _author = author;
         _title = title;
         _detail = detail;
         _url = url;
         _publishDate = date;
     }
+
     return self;
 }
 

@@ -22,7 +22,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NewsArticle : NSObject
+@interface Article : NSObject
 
 @property(nonatomic) NSString *_Nonnull author;
 @property(nonatomic) NSString *_Nonnull title;
