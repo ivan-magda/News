@@ -22,10 +22,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class NewsArticle;
+@class Article;
 
 @interface ArticleViewController : UIViewController
 
-@property(nonatomic) NewsArticle *_Nonnull article;
+@property(nonatomic) Article *_Nonnull article;
 
 @end

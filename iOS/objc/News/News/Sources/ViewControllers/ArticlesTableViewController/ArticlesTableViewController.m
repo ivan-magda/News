@@ -21,8 +21,8 @@
  */
 
 #import "ArticlesTableViewController.h"
-#import "NewsSource.h"
-#import "NewsArticle.h"
+#import "Source.h"
+#import "Article.h"
 #import "DataDirector.h"
 #import "ArticleViewController.h"
 
@@ -44,7 +44,7 @@ static NSString *const kShowArticleSegueIdentifier = @"ShowArticle";
     [super viewDidLoad];
 
     NSAssert(_dataDirector != nil, @"DataDirector must be instantiated.");
-    NSAssert(_selectedSource != nil, @"NewsSource must be selected.");
+    NSAssert(_selectedSource != nil, @"Source must be selected.");
 
     [self configure];
 }
@@ -62,9 +62,9 @@ static NSString *const kShowArticleSegueIdentifier = @"ShowArticle";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kShowArticleSegueIdentifier]) {
         NSIndexPath *selectedRow = [self.tableView indexPathForSelectedRow];
-        NewsArticle *selectedArticle = _articles[selectedRow.row];
+        Article *selectedArticle = _articles[(NSUInteger) selectedRow.row];
 
-        ArticleViewController *detailVC = (ArticleViewController *) segue.destinationViewController;
+        ArticleViewController *detailVC = segue.destinationViewController;
         detailVC.article = selectedArticle;
     }
 }
@@ -76,7 +76,7 @@ static NSString *const kShowArticleSegueIdentifier = @"ShowArticle";
     [_dataDirector.dataSource articlesForSource:_selectedSource withSuccess:^(NSArray *_Nonnull news) {
         [weakSelf updateDataSourceWithNewData:news];
     }                                      fail:^(NSError *_Nonnull error) {
-        NSLog(@"Failed fetch artciles with error: %@", error.localizedDescription);
+        NSLog(@"Failed fetch articles with error: %@", error.localizedDescription);
         [weakSelf showAlertWithTitle:@"Error" message:@"Failed to load articles."];
         [weakSelf.tableView.refreshControl endRefreshing];
     }];
@@ -104,7 +104,7 @@ static NSString *const kShowArticleSegueIdentifier = @"ShowArticle";
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NewsArticle *article = _articles[indexPath.row];
+    Article *article = _articles[(NSUInteger) indexPath.row];
     cell.textLabel.text = article.title;
     cell.detailTextLabel.text = [[self dateFormatter] stringFromDate:article.publishDate];
 }

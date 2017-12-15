@@ -21,7 +21,7 @@
  */
 
 #import "ArticleViewController.h"
-#import "NewsArticle.h"
+#import "Article.h"
 
 @interface ArticleViewController ()
 
@@ -35,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSAssert(_article != nil, @"Article must be setted.");
+    NSAssert(_article != nil, @"Article must be initialized.");
     [self configure];
 }
 

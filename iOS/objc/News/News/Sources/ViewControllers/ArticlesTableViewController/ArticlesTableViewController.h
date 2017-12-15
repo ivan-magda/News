@@ -23,11 +23,11 @@
 #import <UIKit/UIKit.h>
 
 @class DataDirector;
-@class NewsSource;
+@class Source;
 
 @interface ArticlesTableViewController : UITableViewController
 
 @property(nonatomic) DataDirector *_Nonnull dataDirector;
-@property(nonatomic) NewsSource *_Nonnull selectedSource;
+@property(nonatomic) Source *_Nonnull selectedSource;
 
 @end

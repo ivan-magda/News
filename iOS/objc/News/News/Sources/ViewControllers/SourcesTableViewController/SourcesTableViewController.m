@@ -22,8 +22,8 @@
 
 #import "SourcesTableViewController.h"
 #import "DataDirector.h"
-#import "NewsSource.h"
-#import "NewsSourceEmptyDataSourceView.h"
+#import "Source.h"
+#import "EmptySourcesView.h"
 #import "ArticlesTableViewController.h"
 
 static NSString *const kCellReuseIdentifier = @"SourceCell";
@@ -35,9 +35,7 @@ static NSString *const kShowNewsArticlesSegueIdentifier = @"NewsArticles";
 
 @implementation SourcesTableViewController {
     NSArray *_sources;
-
-    UIRefreshControl *_refreshControl;
-    NewsSourceEmptyDataSourceView *_emptyDataSourceView;
+    EmptySourcesView *_emptyDataSourceView;
 }
 
 #pragma mark View Life Cycle
@@ -57,9 +55,9 @@ static NSString *const kShowNewsArticlesSegueIdentifier = @"NewsArticles";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kShowNewsArticlesSegueIdentifier]) {
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        NewsSource *source = _sources[selectedIndexPath.row];
+        Source *source = _sources[(NSUInteger) selectedIndexPath.row];
 
-        ArticlesTableViewController *detailVC = (ArticlesTableViewController *) segue.destinationViewController;
+        ArticlesTableViewController *detailVC = segue.destinationViewController;
         detailVC.selectedSource = source;
         detailVC.dataDirector = _dataDirector;
     }
@@ -69,7 +67,7 @@ static NSString *const kShowNewsArticlesSegueIdentifier = @"NewsArticles";
 
 - (void)configure {
     _sources = [_dataDirector.sources copy];
-    _emptyDataSourceView = [[NewsSourceEmptyDataSourceView alloc] initWithFrame:self.view.bounds];
+    _emptyDataSourceView = [[EmptySourcesView alloc] initWithFrame:self.view.bounds];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:kDataDirectorDidUpdateSourcesNotificationName object:nil];
 
@@ -122,7 +120,7 @@ static NSString *const kShowNewsArticlesSegueIdentifier = @"NewsArticles";
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NewsSource *source = _sources[indexPath.row];
+    Source *source = _sources[(NSUInteger) indexPath.row];
     cell.textLabel.text = source.name;
     cell.detailTextLabel.text = source.category;
 }
