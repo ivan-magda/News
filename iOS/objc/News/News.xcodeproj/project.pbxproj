@@ -309,8 +309,8 @@
 			isa = PBXGroup;
 			children = (
 				7EFB6D3828E88397C73E0E52 /* LaunchScreen.storyboard */,
-				7EFB6BCF3D491109C80A7F96 /* Assets.xcassets */,
 				7EFB679C6D01B86FD71E0E0F /* Main.storyboard */,
+				7EFB6BCF3D491109C80A7F96 /* Assets.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -346,11 +346,11 @@
 		7EFB6E8AA941F7DE77C08F64 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				7EFB6CBF52084AC6F7072183 /* ViewControllers */,
 				7EFB645FF87D63C933291701 /* App */,
-				7EFB649607FEACBC7133B152 /* View */,
 				7EFB6AC47084DCFA9A1E22DC /* Core */,
 				7EFB6F4569A0CA2543117EA6 /* Model */,
+				7EFB649607FEACBC7133B152 /* View */,
+				7EFB6CBF52084AC6F7072183 /* ViewControllers */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -667,7 +667,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6UNHY8UY6E;
 				INFOPLIST_FILE = "$(SRCROOT)/News/Resources/Config/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ivanmagda.News-objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -683,7 +683,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6UNHY8UY6E;
 				INFOPLIST_FILE = "$(SRCROOT)/News/Resources/Config/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ivanmagda.News-objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
