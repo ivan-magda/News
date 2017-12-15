@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-#import "Webservice.h"
+#import "WebService.h"
 
 // MARK: Util
 
@@ -30,15 +30,15 @@ void performOnMain(Block block) {
     dispatch_async(dispatch_get_main_queue(), block);
 }
 
-// MARK: Webservice Extension
+// MARK: WebService Extension
 
-@interface Webservice ()
+@interface WebService ()
 
 @end
 
-// MARK: - Webservice
+// MARK: - WebService
 
-@implementation Webservice {
+@implementation WebService {
     NSURLSession *_session;
     NSMutableSet *_currentTasks;
 }
@@ -73,8 +73,8 @@ void performOnMain(Block block) {
 }
 
 - (void)fetchRawDataForRequest:(NSURLRequest *_Nonnull)request
-                       success:(WebserviceSuccessBlock _Nullable)success
-                          fail:(WebserviceFailBlock _Nullable)fail {
+                       success:(WebServiceSuccessBlock _Nullable)success
+                          fail:(WebServiceFailBlock _Nullable)fail {
     NSURLSessionDataTask *task = [self dataTaskWithRequest:request success:^(NSData *_Nonnull data) {
         performOnMain(^{
             success(data);
@@ -88,8 +88,8 @@ void performOnMain(Block block) {
 }
 
 - (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *_Nonnull)request
-                                      success:(WebserviceSuccessBlock _Nullable)success
-                                         fail:(WebserviceFailBlock _Nullable)fail {
+                                      success:(WebServiceSuccessBlock _Nullable)success
+                                         fail:(WebServiceFailBlock _Nullable)fail {
     __block NSURLSessionDataTask *task = nil;
     task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
         [_currentTasks removeObject:task];

@@ -21,11 +21,11 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "Webservice.h"
+#import "WebService.h"
 
 @class NewsSource;
 
-@interface NewsApiClient : Webservice
+@interface NewsApiClient : WebService
 
 + (nonnull instancetype)sharedInstance;
 

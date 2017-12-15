@@ -14,7 +14,7 @@
 		7EFB618757593E13E2E34AA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EFB679C6D01B86FD71E0E0F /* Main.storyboard */; };
 		7EFB6367EA0DA1BAED6270F9 /* NewsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EFB623F9C3A06AF2E9BCB5C /* NewsBuilder.m */; };
 		7EFB637C5EFC395A415AE73D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EFB6BCF3D491109C80A7F96 /* Assets.xcassets */; };
-		7EFB638AF49DA587A366AF95 /* Webservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EFB6AD1278D7C8DDD3A551E /* Webservice.m */; };
+		7EFB638AF49DA587A366AF95 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EFB6AD1278D7C8DDD3A551E /* WebService.m */; };
 		7EFB63FD7218FAA51EDA8537 /* NewsArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EFB60107FBE79917586B975 /* NewsArticle.m */; };
 		7EFB643EA3AAB444206CE99C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EFB6D3828E88397C73E0E52 /* LaunchScreen.storyboard */; };
 		7EFB6641B83A090506570A8A /* NewsSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EFB60A5F856B28C75E1D144 /* NewsSource.m */; };
@@ -72,8 +72,8 @@
 		7EFB69EB6568400C87DA00CE /* NewsSourceEmptyDataSourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsSourceEmptyDataSourceView.h; sourceTree = "<group>"; };
 		7EFB6A265D9ED34C690126FE /* DataDirectorDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataDirectorDataSource.h; sourceTree = "<group>"; };
 		7EFB6A6A2E3693E7F76A2899 /* NewsSourceLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsSourceLogo.h; sourceTree = "<group>"; };
-		7EFB6AD1278D7C8DDD3A551E /* Webservice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Webservice.m; sourceTree = "<group>"; };
-		7EFB6AE587A2BCDF520CB40B /* Webservice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Webservice.h; sourceTree = "<group>"; };
+		7EFB6AD1278D7C8DDD3A551E /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
+		7EFB6AE587A2BCDF520CB40B /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
 		7EFB6AFC503F81428FA225BF /* NewsSourceEmptyDataSourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsSourceEmptyDataSourceView.m; sourceTree = "<group>"; };
 		7EFB6B9F0C03914BD62AE443 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EFB6BCF3D491109C80A7F96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -271,8 +271,8 @@
 		7EFB6913CA57A8010A550684 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				7EFB6AD1278D7C8DDD3A551E /* Webservice.m */,
-				7EFB6AE587A2BCDF520CB40B /* Webservice.h */,
+				7EFB6AD1278D7C8DDD3A551E /* WebService.m */,
+				7EFB6AE587A2BCDF520CB40B /* WebService.h */,
 				7EFB62BC2BE54E09D869DD36 /* NewsApiClient.m */,
 				7EFB6D28299F485B82C47D14 /* NewsApiClient.h */,
 			);
@@ -507,7 +507,7 @@
 				7EFB67EA5F86AEBA46C37B1D /* AppDelegate.m in Sources */,
 				7EFB6F4D13F6DF5BBB36D486 /* main.m in Sources */,
 				7EFB6D70F65DB2D4C91A03B6 /* NewsSourceEmptyDataSourceView.m in Sources */,
-				7EFB638AF49DA587A366AF95 /* Webservice.m in Sources */,
+				7EFB638AF49DA587A366AF95 /* WebService.m in Sources */,
 				7EFB6F26A69958BE786DB1E2 /* NewsApiClient.m in Sources */,
 				7EFB6367EA0DA1BAED6270F9 /* NewsBuilder.m in Sources */,
 				7EFB6019D2DBD22DC5DD0DA2 /* DataDirector.m in Sources */,

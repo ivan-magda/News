@@ -22,11 +22,11 @@
 
 @import Foundation;
 
-typedef void(^WebserviceSuccessBlock)(NSData *_Nonnull data);
+typedef void(^WebServiceSuccessBlock)(NSData *_Nonnull data);
 
-typedef void(^WebserviceFailBlock)(NSError *_Nonnull error);
+typedef void(^WebServiceFailBlock)(NSError *_Nonnull error);
 
-@interface Webservice : NSObject
+@interface WebService : NSObject
 
 @property(nonatomic, strong, readonly) NSURLSessionConfiguration *_Nonnull configuration;
 @property(nonatomic, strong, readonly) NSString *_Nonnull baseURL;
@@ -42,7 +42,7 @@ typedef void(^WebserviceFailBlock)(NSError *_Nonnull error);
                        methodParameters:(NSDictionary *_Nullable)parameters;
 
 - (void)fetchRawDataForRequest:(NSURLRequest *_Nonnull)request
-                       success:(WebserviceSuccessBlock _Nullable)success
-                          fail:(WebserviceFailBlock _Nullable)fail;
+                       success:(WebServiceSuccessBlock _Nullable)success
+                          fail:(WebServiceFailBlock _Nullable)fail;
 
 @end
