@@ -20,32 +20,8 @@
  * THE SOFTWARE.
  */
 
-#import "NewsSourceEmptyDataSourceView.h"
+#import <UIKit/UIKit.h>
 
-@implementation NewsSourceEmptyDataSourceView
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self configure];
-    }
-    return self;
-}
-
-- (void)configure {
-    CGFloat horizontalMargin = 16.0;
-    CGRect originalFrame = self.frame;
-    CGRect finalFrame = CGRectMake(horizontalMargin, 0.0, originalFrame.size.width - horizontalMargin * 2,
-            originalFrame.size.height);
-
-    UILabel *label = [[UILabel alloc] initWithFrame:finalFrame];
-    label.numberOfLines = 0;
-    label.font = [UIFont systemFontOfSize:19 weight:UIFontWeightMedium];
-    label.text = @"No sources to show.\nPull to refresh.";
-    label.textColor = [UIColor lightGrayColor];
-    label.textAlignment = NSTextAlignmentCenter;
-
-    [self addSubview:label];
-}
+@interface EmptySourcesView : UIView
 
 @end
