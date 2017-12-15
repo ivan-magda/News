@@ -22,7 +22,7 @@
 
 #import "NewsApiClient.h"
 #import "NewsBuilder.h"
-#import "NewsSource.h"
+#import "Source.h"
 
 static NSString *const kApplicationKey = @"4ccf7703d7c84b959e5a1913eedf07e2";
 static NSString *const kBaseUrlString = @"https://newsapi.org/v1/";
@@ -35,20 +35,24 @@ static NSString *const kErrorDomain = @"NewsApiClient";
 + (nonnull instancetype)sharedInstance {
     static NewsApiClient *sharedInstance = nil;
     static dispatch_once_t onceToken;
+
     dispatch_once(&onceToken, ^{
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         sharedInstance = [[NewsApiClient alloc] initWithConfiguration:config baseURL:kBaseUrlString];
     });
+
     return sharedInstance;
 }
 
 - (instancetype)initWithConfiguration:(NSURLSessionConfiguration *)configuration
                               baseURL:(NSString *)url {
     self = [super initWithConfiguration:configuration baseURL:url];
+
     if (self) {
         self.configuration.timeoutIntervalForRequest = 30.0;
         self.configuration.timeoutIntervalForResource = 60.0;
     }
+
     return self;
 }
 
@@ -56,6 +60,7 @@ static NSString *const kErrorDomain = @"NewsApiClient";
     if (_newsBaseURL == nil) {
         _newsBaseURL = [NSURL URLWithString:kBaseUrlString];
     }
+
     return _newsBaseURL;
 }
 
@@ -83,14 +88,18 @@ static NSString *const kErrorDomain = @"NewsApiClient";
     }                       fail:fail];
 }
 
-- (void)articlesForSource:(NewsSource *_Nonnull)source
+- (void)articlesForSource:(Source *_Nonnull)source
               withSuccess:(nonnull void (^)(NSArray *_Nullable articles))success
                      fail:(nonnull void (^)(NSError *_Nonnull error))fail {
     NSMutableDictionary *parameters = [@{
             @"source": source.identifier,
             @"apiKey": kApplicationKey
     } mutableCopy];
-    if (source.sortTypes.count > 0) parameters[@"sortBy"] = source.sortTypes.firstObject;
+
+    if (source.sortTypes.count > 0) {
+        parameters[@"sortBy"] = source.sortTypes.firstObject;
+    }
+
     NSURL *URL = [[self newsBaseURL] URLByAppendingPathComponent:@"articles"];
     NSURLRequest *request = [NSURLRequest requestWithURL:
             [self buildURLWithBaseURL:URL methodParameters:parameters]];
@@ -105,7 +114,7 @@ static NSString *const kErrorDomain = @"NewsApiClient";
         }
 
         success([self parseArticlesJSON:json]);
-    }                       fail:fail];
+    } fail:fail];
 
 }
 

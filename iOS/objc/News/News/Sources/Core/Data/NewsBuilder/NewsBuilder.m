@@ -21,9 +21,9 @@
  */
 
 #import "NewsBuilder.h"
-#import "NewsSource.h"
-#import "NewsSourceLogo.h"
-#import "NewsArticle.h"
+#import "Source.h"
+#import "SourceLogo.h"
+#import "Article.h"
 
 @implementation NewsBuilder
 
@@ -32,15 +32,17 @@
 + (nonnull NSDateFormatter *)sharedDateFormatter {
     static NSDateFormatter *sharedInstance = nil;
     static dispatch_once_t onceToken;
+
     dispatch_once(&onceToken, ^{
         sharedInstance = [NSDateFormatter new];
         sharedInstance.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
         sharedInstance.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
     });
+
     return sharedInstance;
 }
 
-+ (NewsSource *_Nullable)buildSourceFromJSON:(NSDictionary *_Nonnull)json {
++ (Source *_Nullable)buildSourceFromJSON:(NSDictionary *_Nonnull)json {
     NSString *identifier = json[@"id"];
     NSString *name = json[NSStringFromSelector(@selector(name))];
     NSString *detail = json[NSStringFromSelector(@selector(description))];
@@ -58,16 +60,16 @@
         NSLog(@"Failed parse some part of the JSON.");
     }
 
-    NewsSourceLogo *logo = [[NewsSourceLogo alloc] initWithSmallURL:smallURL mediumURL:mediumURL
-                                                           largeURL:largeURL];
+    SourceLogo *logo = [[SourceLogo alloc] initWithSmallURL:smallURL mediumURL:mediumURL
+                                                   largeURL:largeURL];
 
-    return [[NewsSource alloc] initWithIdentifier:identifier
-                                             name:name
-                                           detail:detail
-                                              url:url
-                                         category:category
-                                            logos:logo
-                               availableSortTypes:sortTypes];
+    return [[Source alloc] initWithIdentifier:identifier
+                                         name:name
+                                       detail:detail
+                                          url:url
+                                     category:category
+                                        logos:logo
+                           availableSortTypes:sortTypes];
 }
 
 + (NSArray *_Nullable)buildSourcesFromJSON:(NSDictionary *_Nonnull)json {
@@ -76,7 +78,7 @@
 
     NSArray *jsonSources = jsonCopy[@"sources"];
     [jsonSources enumerateObjectsUsingBlock:^(NSDictionary *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-        NewsSource *newsSource = [NewsBuilder buildSourceFromJSON:obj];
+        Source *newsSource = [NewsBuilder buildSourceFromJSON:obj];
         [sources addObject:newsSource];
     }];
 
@@ -85,21 +87,30 @@
 
 #pragma mark NewsArticle
 
-+ (NewsArticle *_Nullable)buildArticleFromJSON:(NSDictionary *_Nonnull)json {
++ (Article *_Nullable)buildArticleFromJSON:(NSDictionary *_Nonnull)json {
     NSString *author = json[NSStringFromSelector(@selector(author))];
     NSString *title = json[NSStringFromSelector(@selector(title))];
     NSString *detail = json[@"description"];
     NSString *urlString = json[NSStringFromSelector(@selector(url))];
     NSURL *url = [NSURL URLWithString:urlString];
     NSString *dateString = json[@"publishedAt"];
-    NSDate *date = [[self sharedDateFormatter] dateFromString:dateString];
 
-    if ([author isKindOfClass:[NSNull class]])author = nil;
-    if (author == nil || title == nil || detail == nil || url == nil || date == nil) {
-        NSLog(@"Failed parse some part of the JSON.");
+    if (detail == (id) [NSNull null]) {
+        detail = @"";
     }
 
-    return [[NewsArticle alloc] initWithAuthor:author title:title detail:detail url:url publishDate:date];
+    NSDate *date = nil;
+    if (dateString == (id) [NSNull null]) {
+        date = [NSDate date];
+    } else {
+        date = [[self sharedDateFormatter] dateFromString:dateString];
+    }
+
+    if (author == nil || title == nil || detail == nil || url == nil || date == nil) {
+        NSLog(@"%@", @"Failed parse some part of the JSON.");
+    }
+
+    return [[Article alloc] initWithAuthor:author title:title detail:detail url:url publishDate:date];
 }
 
 + (NSArray *_Nullable)buildArticlesFromJSON:(NSDictionary *_Nonnull)json {
@@ -108,7 +119,7 @@
 
     NSArray *jsonSources = jsonCopy[@"articles"];
     [jsonSources enumerateObjectsUsingBlock:^(NSDictionary *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-        NewsArticle *article = [self buildArticleFromJSON:obj];
+        Article *article = [self buildArticleFromJSON:obj];
         [sources addObject:article];
     }];
 

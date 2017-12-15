@@ -22,14 +22,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class NewsSource;
+@class Source;
 
 @protocol DataDirectorDataSource
 
 - (void)allSourcesWithSuccess:(nonnull void (^)(NSArray *_Nonnull sources))success
                          fail:(nonnull void (^)(NSError *_Nonnull error))fail;
 
-- (void)articlesForSource:(NewsSource *_Nonnull)source
+- (void)articlesForSource:(Source *_Nonnull)source
               withSuccess:(nonnull void (^)(NSArray *_Nonnull news))success
                      fail:(nonnull void (^)(NSError *_Nonnull error))fail;
 

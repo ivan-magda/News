@@ -38,11 +38,12 @@
 
 - (void)allSources:(nullable void (^)(NSArray *_Nullable sources))completionHandler {
     __weak DataDirector *weakSelf = self;
+
     [_dataSource allSourcesWithSuccess:^(NSArray *_Nonnull sources) {
         weakSelf.sources = sources;
         [weakSelf didUpdateSources];
         if (completionHandler != nil) completionHandler(weakSelf.sources);
-    }                             fail:^(NSError *_Nonnull error) {
+    } fail:^(NSError *_Nonnull error) {
         weakSelf.sources = nil;
         [weakSelf didUpdateSources];
         if (completionHandler != nil) completionHandler(weakSelf.sources);

@@ -26,7 +26,7 @@
 
 typedef void(^Block)();
 
-void performOnMain(Block block) {
+void onMain(Block block) {
     dispatch_async(dispatch_get_main_queue(), block);
 }
 
@@ -47,12 +47,12 @@ void performOnMain(Block block) {
 
 - (nonnull instancetype)initWithConfiguration:(NSURLSessionConfiguration *_Nonnull)configuration
                                       baseURL:(NSString *_Nonnull)url {
-    self = [super init];
-    if (self) {
+    if (self = [super init]) {
         _configuration = configuration;
         _baseURL = url;
         _currentTasks = [NSMutableSet new];
     }
+
     return self;
 }
 
@@ -62,6 +62,7 @@ void performOnMain(Block block) {
     if (_session == nil) {
         _session = [NSURLSession sessionWithConfiguration:_configuration];
     }
+
     return _session;
 }
 
@@ -76,11 +77,11 @@ void performOnMain(Block block) {
                        success:(WebServiceSuccessBlock _Nullable)success
                           fail:(WebServiceFailBlock _Nullable)fail {
     NSURLSessionDataTask *task = [self dataTaskWithRequest:request success:^(NSData *_Nonnull data) {
-        performOnMain(^{
+        onMain(^{
             success(data);
         });
-    }                                                 fail:^(NSError *_Nonnull error) {
-        performOnMain(^{
+    }   fail:^(NSError *_Nonnull error) {
+        onMain(^{
             fail(error);
         });
     }];

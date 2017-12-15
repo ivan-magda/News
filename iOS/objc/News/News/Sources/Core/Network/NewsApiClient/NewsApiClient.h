@@ -23,7 +23,7 @@
 #import <Foundation/Foundation.h>
 #import "WebService.h"
 
-@class NewsSource;
+@class Source;
 
 @interface NewsApiClient : WebService
 
@@ -32,7 +32,7 @@
 - (void)allSourcesWithSuccess:(nullable void (^)(NSArray *_Nullable sources))success
                          fail:(nullable void (^)(NSError *_Nonnull error))fail;
 
-- (void)articlesForSource:(NewsSource *_Nonnull)source
+- (void)articlesForSource:(Source *_Nonnull)source
               withSuccess:(nonnull void (^)(NSArray *_Nullable articles))success
                      fail:(nonnull void (^)(NSError *_Nonnull error))fail;
 

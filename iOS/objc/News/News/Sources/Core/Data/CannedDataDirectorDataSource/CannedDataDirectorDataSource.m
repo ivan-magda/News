@@ -39,7 +39,7 @@
     [_apiClient allSourcesWithSuccess:success fail:fail];
 }
 
-- (void)articlesForSource:(NewsSource *)source withSuccess:(void (^)(NSArray *_Nonnull))success fail:(void (^)(NSError *_Nonnull))fail {
+- (void)articlesForSource:(Source *)source withSuccess:(void (^)(NSArray *_Nonnull))success fail:(void (^)(NSError *_Nonnull))fail {
     [_apiClient articlesForSource:source withSuccess:success fail:fail];
 }
 
