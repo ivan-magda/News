@@ -20,20 +20,16 @@
  * THE SOFTWARE.
  */
 
-#import "NewsSourceLogo.h"
+#import <Foundation/Foundation.h>
 
-@implementation NewsSourceLogo
+@interface SourceLogo : NSObject
+
+@property(nonatomic) NSString *_Nonnull small;
+@property(nonatomic) NSString *_Nonnull medium;
+@property(nonatomic) NSString *_Nonnull large;
 
 - (nonnull instancetype)initWithSmallURL:(NSString *_Nonnull)small
                                mediumURL:(NSString *_Nonnull)medium
-                                largeURL:(NSString *_Nonnull)large {
-    self = [super init];
-    if (self) {
-        _small = small;
-        _medium = medium;
-        _large = large;
-    }
-    return self;
-}
+                                largeURL:(NSString *_Nonnull)large;
 
 @end
