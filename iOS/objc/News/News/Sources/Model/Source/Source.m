@@ -20,26 +20,29 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import "Source.h"
+#import "SourceLogo.h"
 
-@class NewsSourceLogo;
-
-@interface NewsSource : NSObject
-
-@property(nonatomic) NSString *_Nonnull identifier;
-@property(nonatomic) NSString *_Nonnull name;
-@property(nonatomic) NSString *_Nonnull detail;
-@property(nonatomic) NSString *_Nonnull url;
-@property(nonatomic) NSString *_Nonnull category;
-@property(nonatomic) NewsSourceLogo *_Nonnull logos;
-@property(nonatomic, readonly) NSArray *_Nonnull sortTypes;
+@implementation Source
 
 - (nonnull instancetype)initWithIdentifier:(NSString *_Nonnull)identifier
                                       name:(NSString *_Nonnull)name
                                     detail:(NSString *_Nonnull)detail
                                        url:(NSString *_Nonnull)url
                                   category:(NSString *_Nonnull)category
-                                     logos:(NewsSourceLogo *_Nonnull)logos
-                        availableSortTypes:(NSArray *_Nonnull)sortTypes;
+                                     logos:(SourceLogo *_Nonnull)logos
+                        availableSortTypes:(NSArray *_Nonnull)sortTypes {
+    if (self = [super init]) {
+        _identifier = identifier;
+        _name = name;
+        _detail = detail;
+        _url = url;
+        _category = category;
+        _logos = logos;
+        _sortTypes = sortTypes;
+    }
+
+    return self;
+}
 
 @end
