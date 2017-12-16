@@ -21,7 +21,7 @@
  */
 
 import UIKit
-import Network
+import IMNetwork
 
 // MARK: AppDelegate: UIResponder, UIApplicationDelegate
 

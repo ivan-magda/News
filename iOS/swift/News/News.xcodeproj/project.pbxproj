@@ -19,7 +19,6 @@
 		75111E371DEBC5BA000657BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75111E351DEBC5BA000657BB /* LaunchScreen.storyboard */; };
 		75111E421DEBC5BA000657BB /* NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75111E411DEBC5BA000657BB /* NewsTests.swift */; };
 		75111E4D1DEBC5BA000657BB /* NewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75111E4C1DEBC5BA000657BB /* NewsUITests.swift */; };
-		7550EF851DEBD43E0006E458 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550EF821DEBD3CC0006E458 /* Network.framework */; };
 		7550EF901DEBE0DA0006E458 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550EF8F1DEBE0DA0006E458 /* Source.swift */; };
 		7550EF931DEBE1D50006E458 /* SourceLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550EF921DEBE1D50006E458 /* SourceLogo.swift */; };
 		7550EF951DEBE4A70006E458 /* NewsWebservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550EF941DEBE4A70006E458 /* NewsWebservice.swift */; };
@@ -27,6 +26,8 @@
 		7550EF9A1DEC362A0006E458 /* SourcesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550EF991DEC362A0006E458 /* SourcesTableViewDataSource.swift */; };
 		7551E7851DED07A0002D0C32 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551E7841DED07A0002D0C32 /* ArticleViewController.swift */; };
 		7551E7891DED0D02002D0C32 /* ArticleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551E7881DED0D02002D0C32 /* ArticleContentView.swift */; };
+		7571F2D51FE49B5F0056A385 /* IMNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 755B4CF31FE49B0D00F8DF30 /* IMNetwork.framework */; };
+		7571F2D61FE49B5F0056A385 /* IMNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 755B4CF31FE49B0D00F8DF30 /* IMNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,21 +45,42 @@
 			remoteGlobalIDString = 75111E281DEBC5BA000657BB;
 			remoteInfo = News;
 		};
-		7550EF811DEBD3CC0006E458 /* PBXContainerItemProxy */ = {
+		755B4CF21FE49B0D00F8DF30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7550EF7C1DEBD3CC0006E458 /* Network.xcodeproj */;
+			containerPortal = 755B4CED1FE49B0D00F8DF30 /* IMNetwork.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 7550EF5A1DEBD1D00006E458;
-			remoteInfo = Network;
+			remoteInfo = IMNetwork;
 		};
-		7550EF831DEBD3CC0006E458 /* PBXContainerItemProxy */ = {
+		755B4CF41FE49B0D00F8DF30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7550EF7C1DEBD3CC0006E458 /* Network.xcodeproj */;
+			containerPortal = 755B4CED1FE49B0D00F8DF30 /* IMNetwork.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 7550EF631DEBD1D00006E458;
-			remoteInfo = NetworkTests;
+			remoteInfo = IMNetworkTests;
+		};
+		7571F2D71FE49B5F0056A385 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 755B4CED1FE49B0D00F8DF30 /* IMNetwork.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7550EF591DEBD1D00006E458;
+			remoteInfo = IMNetwork;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7571F2D91FE49B5F0056A385 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7571F2D61FE49B5F0056A385 /* IMNetwork.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7501CBD21DEC690800A72A94 /* ArticlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +101,6 @@
 		75111E481DEBC5BA000657BB /* NewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75111E4C1DEBC5BA000657BB /* NewsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsUITests.swift; sourceTree = "<group>"; };
 		75111E4E1DEBC5BA000657BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7550EF7C1DEBD3CC0006E458 /* Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Network.xcodeproj; path = Network/Network.xcodeproj; sourceTree = "<group>"; };
 		7550EF8F1DEBE0DA0006E458 /* Source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		7550EF921DEBE1D50006E458 /* SourceLogo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceLogo.swift; sourceTree = "<group>"; };
 		7550EF941DEBE4A70006E458 /* NewsWebservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsWebservice.swift; sourceTree = "<group>"; };
@@ -87,6 +108,7 @@
 		7550EF991DEC362A0006E458 /* SourcesTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourcesTableViewDataSource.swift; sourceTree = "<group>"; };
 		7551E7841DED07A0002D0C32 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		7551E7881DED0D02002D0C32 /* ArticleContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleContentView.swift; sourceTree = "<group>"; };
+		755B4CED1FE49B0D00F8DF30 /* IMNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IMNetwork.xcodeproj; path = IMNetwork/IMNetwork.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7550EF851DEBD43E0006E458 /* Network.framework in Frameworks */,
+				7571F2D51FE49B5F0056A385 /* IMNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,7 +149,7 @@
 		75111E201DEBC5BA000657BB = {
 			isa = PBXGroup;
 			children = (
-				7550EF7C1DEBD3CC0006E458 /* Network.xcodeproj */,
+				755B4CED1FE49B0D00F8DF30 /* IMNetwork.xcodeproj */,
 				75111E2B1DEBC5BA000657BB /* News */,
 				75111E401DEBC5BA000657BB /* NewsTests */,
 				75111E4B1DEBC5BA000657BB /* NewsUITests */,
@@ -225,15 +247,6 @@
 			name = App;
 			sourceTree = "<group>";
 		};
-		7550EF7D1DEBD3CC0006E458 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7550EF821DEBD3CC0006E458 /* Network.framework */,
-				7550EF841DEBD3CC0006E458 /* NetworkTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		7550EF911DEBE0DD0006E458 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +265,15 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		755B4CEE1FE49B0D00F8DF30 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				755B4CF31FE49B0D00F8DF30 /* IMNetwork.framework */,
+				755B4CF51FE49B0D00F8DF30 /* IMNetworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -262,10 +284,12 @@
 				75111E251DEBC5BA000657BB /* Sources */,
 				75111E261DEBC5BA000657BB /* Frameworks */,
 				75111E271DEBC5BA000657BB /* Resources */,
+				7571F2D91FE49B5F0056A385 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7571F2D81FE49B5F0056A385 /* PBXTargetDependency */,
 			);
 			name = News;
 			productName = News;
@@ -353,8 +377,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 7550EF7D1DEBD3CC0006E458 /* Products */;
-					ProjectRef = 7550EF7C1DEBD3CC0006E458 /* Network.xcodeproj */;
+					ProductGroup = 755B4CEE1FE49B0D00F8DF30 /* Products */;
+					ProjectRef = 755B4CED1FE49B0D00F8DF30 /* IMNetwork.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -367,18 +391,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		7550EF821DEBD3CC0006E458 /* Network.framework */ = {
+		755B4CF31FE49B0D00F8DF30 /* IMNetwork.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = Network.framework;
-			remoteRef = 7550EF811DEBD3CC0006E458 /* PBXContainerItemProxy */;
+			path = IMNetwork.framework;
+			remoteRef = 755B4CF21FE49B0D00F8DF30 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7550EF841DEBD3CC0006E458 /* NetworkTests.xctest */ = {
+		755B4CF51FE49B0D00F8DF30 /* IMNetworkTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = NetworkTests.xctest;
-			remoteRef = 7550EF831DEBD3CC0006E458 /* PBXContainerItemProxy */;
+			path = IMNetworkTests.xctest;
+			remoteRef = 755B4CF41FE49B0D00F8DF30 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -460,6 +484,11 @@
 			isa = PBXTargetDependency;
 			target = 75111E281DEBC5BA000657BB /* News */;
 			targetProxy = 75111E491DEBC5BA000657BB /* PBXContainerItemProxy */;
+		};
+		7571F2D81FE49B5F0056A385 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IMNetwork;
+			targetProxy = 7571F2D71FE49B5F0056A385 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -593,6 +622,7 @@
 		75111E521DEBC5BA000657BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6UNHY8UY6E;
 				INFOPLIST_FILE = News/Info.plist;
@@ -608,6 +638,7 @@
 		75111E531DEBC5BA000657BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6UNHY8UY6E;
 				INFOPLIST_FILE = News/Info.plist;
