@@ -21,7 +21,7 @@
  */
 
 import Foundation
-import Network
+import IMNetwork
 
 // MARK: NewsWebservice
 

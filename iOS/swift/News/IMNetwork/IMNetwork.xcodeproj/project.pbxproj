@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7550EF641DEBD1D00006E458 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550EF5A1DEBD1D00006E458 /* Network.framework */; };
+		7550EF641DEBD1D00006E458 /* IMNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550EF5A1DEBD1D00006E458 /* IMNetwork.framework */; };
 		7550EF691DEBD1D00006E458 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550EF681DEBD1D00006E458 /* NetworkTests.swift */; };
-		7550EF6B1DEBD1D00006E458 /* Network.h in Headers */ = {isa = PBXBuildFile; fileRef = 7550EF5D1DEBD1D00006E458 /* Network.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7550EF6B1DEBD1D00006E458 /* IMNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 7550EF5D1DEBD1D00006E458 /* IMNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7550EF781DEBD2BE0006E458 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550EF751DEBD2BE0006E458 /* Resource.swift */; };
 		7550EF791DEBD2BE0006E458 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550EF761DEBD2BE0006E458 /* Webservice.swift */; };
 		7550EF871DEBD4BB0006E458 /* CachedWebservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550EF861DEBD4BB0006E458 /* CachedWebservice.swift */; };
@@ -28,10 +28,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7550EF5A1DEBD1D00006E458 /* Network.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Network.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7550EF5D1DEBD1D00006E458 /* Network.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
+		7550EF5A1DEBD1D00006E458 /* IMNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IMNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7550EF5D1DEBD1D00006E458 /* IMNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMNetwork.h; sourceTree = "<group>"; };
 		7550EF5E1DEBD1D00006E458 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7550EF631DEBD1D00006E458 /* NetworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7550EF631DEBD1D00006E458 /* IMNetworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IMNetworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7550EF681DEBD1D00006E458 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		7550EF6A1DEBD1D00006E458 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7550EF751DEBD2BE0006E458 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7550EF641DEBD1D00006E458 /* Network.framework in Frameworks */,
+				7550EF641DEBD1D00006E458 /* IMNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +63,7 @@
 		7550EF501DEBD1D00006E458 = {
 			isa = PBXGroup;
 			children = (
-				7550EF5C1DEBD1D00006E458 /* Network */,
+				7550EF5C1DEBD1D00006E458 /* IMNetwork */,
 				7550EF671DEBD1D00006E458 /* NetworkTests */,
 				7550EF5B1DEBD1D00006E458 /* Products */,
 			);
@@ -72,13 +72,13 @@
 		7550EF5B1DEBD1D00006E458 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7550EF5A1DEBD1D00006E458 /* Network.framework */,
-				7550EF631DEBD1D00006E458 /* NetworkTests.xctest */,
+				7550EF5A1DEBD1D00006E458 /* IMNetwork.framework */,
+				7550EF631DEBD1D00006E458 /* IMNetworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7550EF5C1DEBD1D00006E458 /* Network */ = {
+		7550EF5C1DEBD1D00006E458 /* IMNetwork */ = {
 			isa = PBXGroup;
 			children = (
 				7550EF8C1DEBD51D0006E458 /* Model */,
@@ -86,7 +86,7 @@
 				7550EF8E1DEBD52D0006E458 /* Cache */,
 				7550EF7A1DEBD2CB0006E458 /* Supporting Files */,
 			);
-			path = Network;
+			path = IMNetwork;
 			sourceTree = "<group>";
 		};
 		7550EF671DEBD1D00006E458 /* NetworkTests */ = {
@@ -101,7 +101,7 @@
 		7550EF7A1DEBD2CB0006E458 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7550EF5D1DEBD1D00006E458 /* Network.h */,
+				7550EF5D1DEBD1D00006E458 /* IMNetwork.h */,
 				7550EF5E1DEBD1D00006E458 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -140,16 +140,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7550EF6B1DEBD1D00006E458 /* Network.h in Headers */,
+				7550EF6B1DEBD1D00006E458 /* IMNetwork.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7550EF591DEBD1D00006E458 /* Network */ = {
+		7550EF591DEBD1D00006E458 /* IMNetwork */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7550EF6E1DEBD1D00006E458 /* Build configuration list for PBXNativeTarget "Network" */;
+			buildConfigurationList = 7550EF6E1DEBD1D00006E458 /* Build configuration list for PBXNativeTarget "IMNetwork" */;
 			buildPhases = (
 				7550EF551DEBD1D00006E458 /* Sources */,
 				7550EF561DEBD1D00006E458 /* Frameworks */,
@@ -160,14 +160,14 @@
 			);
 			dependencies = (
 			);
-			name = Network;
+			name = IMNetwork;
 			productName = Network;
-			productReference = 7550EF5A1DEBD1D00006E458 /* Network.framework */;
+			productReference = 7550EF5A1DEBD1D00006E458 /* IMNetwork.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7550EF621DEBD1D00006E458 /* NetworkTests */ = {
+		7550EF621DEBD1D00006E458 /* IMNetworkTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7550EF711DEBD1D00006E458 /* Build configuration list for PBXNativeTarget "NetworkTests" */;
+			buildConfigurationList = 7550EF711DEBD1D00006E458 /* Build configuration list for PBXNativeTarget "IMNetworkTests" */;
 			buildPhases = (
 				7550EF5F1DEBD1D00006E458 /* Sources */,
 				7550EF601DEBD1D00006E458 /* Frameworks */,
@@ -178,9 +178,9 @@
 			dependencies = (
 				7550EF661DEBD1D00006E458 /* PBXTargetDependency */,
 			);
-			name = NetworkTests;
+			name = IMNetworkTests;
 			productName = NetworkTests;
-			productReference = 7550EF631DEBD1D00006E458 /* NetworkTests.xctest */;
+			productReference = 7550EF631DEBD1D00006E458 /* IMNetworkTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -190,23 +190,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Ivan Magda";
 				TargetAttributes = {
 					7550EF591DEBD1D00006E458 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 6UNHY8UY6E;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					7550EF621DEBD1D00006E458 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 6UNHY8UY6E;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 7550EF541DEBD1D00006E458 /* Build configuration list for PBXProject "Network" */;
+			buildConfigurationList = 7550EF541DEBD1D00006E458 /* Build configuration list for PBXProject "IMNetwork" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -218,8 +219,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7550EF591DEBD1D00006E458 /* Network */,
-				7550EF621DEBD1D00006E458 /* NetworkTests */,
+				7550EF591DEBD1D00006E458 /* IMNetwork */,
+				7550EF621DEBD1D00006E458 /* IMNetworkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -267,7 +268,7 @@
 /* Begin PBXTargetDependency section */
 		7550EF661DEBD1D00006E458 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7550EF591DEBD1D00006E458 /* Network */;
+			target = 7550EF591DEBD1D00006E458 /* IMNetwork */;
 			targetProxy = 7550EF651DEBD1D00006E458 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -282,7 +283,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -290,7 +293,12 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -314,7 +322,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -335,7 +343,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -343,7 +353,12 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -361,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -382,15 +397,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Network/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/IMNetwork/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmagda.Network;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmagda.IMNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -404,14 +420,15 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Network/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/IMNetwork/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmagda.Network;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmagda.IMNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -424,7 +441,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmagda.NetworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -437,14 +455,15 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmagda.NetworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7550EF541DEBD1D00006E458 /* Build configuration list for PBXProject "Network" */ = {
+		7550EF541DEBD1D00006E458 /* Build configuration list for PBXProject "IMNetwork" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7550EF6C1DEBD1D00006E458 /* Debug */,
@@ -453,7 +472,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7550EF6E1DEBD1D00006E458 /* Build configuration list for PBXNativeTarget "Network" */ = {
+		7550EF6E1DEBD1D00006E458 /* Build configuration list for PBXNativeTarget "IMNetwork" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7550EF6F1DEBD1D00006E458 /* Debug */,
@@ -462,7 +481,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7550EF711DEBD1D00006E458 /* Build configuration list for PBXNativeTarget "NetworkTests" */ = {
+		7550EF711DEBD1D00006E458 /* Build configuration list for PBXNativeTarget "IMNetworkTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7550EF721DEBD1D00006E458 /* Debug */,

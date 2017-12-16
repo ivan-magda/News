@@ -36,7 +36,7 @@ public enum WebserviceError: Error {
     case other
 }
 
-func logError<A>(_ result: Result<A>) {
+public func logError<A>(_ result: Result<A>) {
     guard case let .error(e) = result else { return }
     assert(false, "\(e)")
 }
